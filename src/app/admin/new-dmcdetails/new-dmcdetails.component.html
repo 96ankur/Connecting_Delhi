@@ -1,0 +1,135 @@
+
+<!--section body-->
+<div class="container pt-4">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 text-center" style="color:teal;">
+         <img src="assets/images/NDMC.jpeg" style="height:130px;width:150px;"  alt=""> <span class="org" style="text-transform:uppercase;">New Delhi Municipal Corporation</span>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+ </div>
+ <br><br>
+ <div class="container ">
+        <div class="row">
+            <div class="col-md-4 pt-4">
+                    <mdb-card>
+                            <div class="view rgba-white-slight waves-light" mdbWavesEffect style="background: linear-gradient(to bottom right, #6452E9, #639FF9);color:#ffffff;">
+                              <!-- Card img -->
+                              <h4 class="text-center">Total Complaints</h4>
+                              <h5 class="text-center">5</h5>
+                              <a> <div class="mask"></div> </a>
+                            </div>
+                            
+                    </mdb-card>
+            </div> 
+            <div class="col-md-4 pt-4">
+                    <mdb-card>
+                            <div class="view rgba-white-slight waves-light" mdbWavesEffect style="background: linear-gradient(to bottom right, #56ab2f, #a8e063);color:#ffffff;">
+                              <!-- Card img -->
+                              <h4 class="text-center">Solved Complaints</h4>
+                              <h5 class="text-center">5</h5>
+                              <a> <div class="mask"></div> </a>
+                            </div>
+                            
+                    </mdb-card>
+            </div> 
+            <div class="col-md-4 pt-4">
+                    <mdb-card style="">
+                            <div class="view rgba-white-slight waves-light" mdbWavesEffect style="background: linear-gradient(to bottom right,#ff512f,#dd2476);color:#ffffff;">
+                              <!-- Card img -->
+                              <h4 class="text-center" style="color:#ffffff;">Pending Complaints</h4>
+                              
+                              <h5 class="text-center">5</h5>
+                              <a> <div class="mask"></div> </a>
+                            </div>
+                            
+                    </mdb-card>
+            </div>
+            
+        </div>
+    </div>
+    <br>
+ <div class="container">
+     
+    <div class="row">
+      <div class="col-md-6  pt-4">
+        <mat-card>
+            <h3 class="text-center">No. of Complaints Registered </h3>
+            <hr>
+            <div style="display: block">
+                <canvas mdbChart
+                    [chartType]="chartTypeTotal"
+                    [datasets]="chartDatasetsTotal"
+                    [labels]="chartLabelsTotal"
+                    [colors]="chartColorsTotal"
+                    [options]="chartOptionsTotal"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+                </canvas>
+            </div>
+        </mat-card>
+      </div>
+      <div class="col-md-6  pt-4">
+          <mat-card>
+              <h3 class="text-center">Complaints Solved In Months</h3>
+              <hr>
+              <div style="display: block">
+                  <canvas mdbChart
+                      [chartType]="chartTypeSolved"
+                      [datasets]="chartDatasetsSolved"
+                      [labels]="chartLabelsSolved"
+                      [colors]="chartColorsSolved"
+                      [options]="chartOptionsSolved"
+                      [legend]="true"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+                  </canvas>
+              </div>
+          </mat-card>
+      </div>      
+    </div>
+    <div class="row">
+        <div class="col-md-6  pt-4">
+          <mat-card>
+              <h3 class="text-center">Complaints Pending In Months</h3>
+              <hr>
+              <div style="display: block">
+                  <canvas mdbChart
+                      [chartType]="chartTypePending"
+                      [datasets]="chartDatasetsPending"
+                      [labels]="chartLabelsPending"
+                      [colors]="chartColorsPending"
+                      [options]="chartOptionsPending"
+                      [legend]="true"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+                  </canvas>
+              </div>
+          </mat-card>
+        </div>
+        <div class="col-md-6  pt-4">
+            <mat-card>
+                <h3 class="text-center">Complaints In Each Category </h3>
+                 <hr>      
+                 <div style="display: block; " >
+                    <canvas mdbChart style=" height:100px;"
+                        [chartType]="chartTypeCategory"
+                        [data]="chartDataCategory"
+                        [labels]="chartLabelsCategory"
+                        [colors]="chartColorsCategory"
+                        [options]="chartOptionsCategory"
+                        [legend]="true"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </mat-card>
+        </div>      
+      </div>
+  </div>
+  
+  
+  <br><br>
+  

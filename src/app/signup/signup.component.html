@@ -1,0 +1,163 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark teal navbar-fixed-top">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">ConnectingDelhi</a>
+  </mdb-navbar-brand>
+
+   </mdb-navbar>
+<!--/.Navbar-->
+<div class="container" >
+  <div class="row " >
+    <div class="col-md-2 pt-4"></div>
+    <div class="col-md-8 pt-4">
+        <br>
+        <mat-card>
+            <h3 class="text-center"><img src="assets/images/india.png" ></h3>
+            <h3 class="text-center" style="font-weight:bold;color:teal;">Connecting_Delhi</h3>
+      
+                    <form [formGroup]="userSignupForm" novalidate (ngSubmit)="onSubmitUserSignupForm(userSignupForm.value)">
+                        <br>  
+                        
+                        <mat-form-field class="full-width"  hintLabel="Max 15 characters">
+                            <input  #input1 maxlength="15" matInput placeholder="Username" formControlName="userName" required>
+                            <mat-hint align="end">{{input1.value?.length || 0}}/15</mat-hint>
+                            <span matSuffix><i class="fa fa-user " style="color:gray;"></i></span>                   
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['userName'].errors?.required &&
+                            userSignupForm.controls['userName'].touched">userName is <b>Required</b> </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['userName'].errors?.minlength ">Minimum length is atleast 2  </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['userName'].errors?.maxlength ">Maximum length is 15 </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['userName'].errors?.pattern ">charaters & digits is allow </mat-error>
+                     
+                        </mat-form-field>
+      
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Email" formControlName="email" required>
+                            <span matSuffix><i class="fa fa-envelope " style="color:gray;"></i></span>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['email'].errors?.required &&
+                            userSignupForm.controls['email'].touched">Email is <b>Required</b></mat-error> 
+                          <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['email'].errors?.pattern">Enter valid email</mat-error> 
+                 
+                          </mat-form-field>
+                              
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Aadhar No" formControlName="aadharNo" required>
+                          <span matSuffix><i class="fa fa-id-card " style="color:gray;"></i></span>
+                          <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['aadharNo'].errors?.required &&
+                            userSignupForm.controls['phone'].touched">aadharNo no is <b>Required</b> </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['aadharNo'].errors?.minlength">12 digits aadharNo required </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['aadharNo'].errors?.maxlength">12 digits aadharNo required </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['aadharNo'].errors?.pattern">aadharNo must contain digits only </mat-error> 
+                  
+                        </mat-form-field>
+      
+      
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                          <span matSuffix (click)="hide = !hide"><i class="fa fa-lock " style="color:gray;"></i></span>
+                          <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['password'].errors?.required &&
+                     userSignupForm.controls['password'].touched">Password is <b>Required</b> </mat-error>
+                   
+                        </mat-form-field>
+                
+      
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Mobile" formControlName="phone" required>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['phone'].errors?.required &&
+                            userSignupForm.controls['phone'].touched">mobile no is <b>Required</b> </mat-error>
+                            
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['phone'].errors?.minlength">Minimum length is 10 </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['phone'].errors?.maxlength">Minimum length is 10 </mat-error>
+                            <mat-error class="help-block form-error text-danger small" *ngIf="userSignupForm.controls['phone'].errors?.pattern">Only numbers is allow that start with 7,8 or 9 </mat-error>
+                          
+                        </mat-form-field>
+                                           
+                
+                        <button  mdbBtn type="submit" color="elegant" class="waves-light modal-color" mdbWavesEffect  [disabled]="!userSignupForm.valid">
+                          Sign Up
+                        </button>
+                      
+                
+                      </form>
+                      <br>
+                      <div *ngIf="flag">
+                      <form [formGroup]="userSignupOTPForm" novalidate (ngSubmit)="onSubmitUserSignupOTPForm(userSignupOTPForm.value)">
+                        
+                        <mat-form-field class="full-width">
+                          <input matInput placeholder="otp" formControlName="otp" required >
+                          <mat-error class="help-block form-error text-danger small" *ngIf="userSignupOTPForm.controls['otp'].errors?.required &&
+                          userSignupOTPForm.controls['otp'].touched">OTP is <b>required</b> </mat-error>
+                          <mat-error class="help-block form-error text-danger small" *ngIf="userSignupOTPForm.controls['otp'].errors?.minlength">Minimum 5 digits required </mat-error>
+                          <mat-error class="help-block form-error text-danger small" *ngIf="userSignupOTPForm.controls['otp'].errors?.maxlength">Maximum 5 digits required </mat-error>
+                          <mat-error class="help-block form-error text-danger small" *ngIf="userSignupOTPForm.controls['otp'].errors?.pattern">OTP must contain digits only </mat-error> 
+               
+                        </mat-form-field>
+                
+                      
+                        <button mdbBtn type="submit" color="elegant" class="waves-light modal-color" mdbWavesEffect [disabled]="!userSignupOTPForm.valid">
+                          Verify OTP
+                        </button>
+                        <BR>
+                        <a routerLink="../user">Resend OTP</a>
+       
+      
+                      </form>
+                    </div>
+         
+             </mat-card>
+      </div>
+      
+    
+  </div>
+</div>
+
+
+<br><br>
+<!-- Footer -->
+<footer class="page-footer font-small teal pt-4 ">
+
+  <!-- Footer Text -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">Connecting Delhi</h5>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae harum esse fugiat. Itaque, culpa?</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-md-0 mb-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id excepturi hic.</p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Text -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="https://ConnectingIndia.ml"> ConnectingDelhi.ml</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+

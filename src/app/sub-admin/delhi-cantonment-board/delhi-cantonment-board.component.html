@@ -1,0 +1,222 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark teal navbar-fixed-top">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">ConnectingDELHI</a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+
+        
+          <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect mdbWavesEffect>
+                Total Complaints<span class="badge badge-primary badge-pill">{{complaintsCount.totalComplaints}}</span>
+              </a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect mdbWavesEffect>
+                Completed Comp.<span class="badge badge-success badge-pill">{{complaintsCount.completedComplaints}}</span>
+              </a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect mdbWavesEffect>
+                Pending Comp.  <span class="badge badge-danger badge-pill">{{complaintsCount.pendingComplaints}}</span> 
+              </a>
+          </li>
+
+          <!-- Dropdown -->
+          <li class="nav-item dropdown teal"  dropdown dropdown-primary>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                  Profile<i class="fa fa-user"></i><span class="caret"></span></a>
+              <div *dropdownMenu class="dropdown-menu dropdown " role="menu">
+                  <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Logout</a>
+                  <a class="dropdown-item waves-light" mdbWavesEffect routerLink="changePassword">Change Password</a>
+                  
+              </div>
+          </li>
+
+      </ul>
+      <!-- Links -->
+
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
+
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 text-center" style="color:teal;">
+       <img src="assets/images/DCB.jpg" style="height:130px;width:150px;"  alt=""> <span class="org" style="text-transform:uppercase; font-size:30px;
+       font-weight: bolder;">Delhi Cantonment Board</span>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+<br><br>
+<div class="container">
+<div class="row">
+  <div class="col-md-3 pt-4">
+      <mdb-card class="text-center">
+          <mdb-card-header class="teal dark white-text">
+                  <h5>Electricity Problem Box</h5>
+                  
+          </mdb-card-header>
+          <mdb-card-body >
+            <mdb-card-text class="view rgba-white-slight text-center waves-light" mdbWavesEffect >
+                <img  src="assets/images/elect.png"  alt="">
+            </mdb-card-text>
+            <a  [routerLink]="['../complaintBox','Electricity']" mdbBtn color="mdb-color" size="sm" class="waves-light" mdbWavesEffect>Open It</a>
+          </mdb-card-body>
+          <mdb-card-footer class="text-muted teal dark white-text">
+          </mdb-card-footer>
+       </mdb-card>
+       
+  </div>
+  <div class="col-md-3 pt-4">
+      <mdb-card class="text-center">
+          <mdb-card-header class="teal dark white-text">
+                  <h5>Water Problem Box</h5>
+                  
+          </mdb-card-header>
+          <mdb-card-body >
+            <mdb-card-text class="view rgba-white-slight text-center waves-light" mdbWavesEffect >
+                <img  src="assets/images/water.png"  alt="">
+            </mdb-card-text>
+            <a  [routerLink]="['../complaintBox','Water']" mdbBtn color="mdb-color" size="sm" class="waves-light" mdbWavesEffect>Open It</a>
+          </mdb-card-body>
+          <mdb-card-footer class="text-muted teal dark white-text">
+          </mdb-card-footer>
+       </mdb-card>
+
+  </div>
+  <div class="col-md-3 pt-4">
+      <mdb-card class="text-center">
+          <mdb-card-header class="teal dark white-text">
+                  <h5>Road Problem Box</h5>
+                  
+          </mdb-card-header>
+          <mdb-card-body >
+            <mdb-card-text class="view rgba-white-slight text-center waves-light" mdbWavesEffect >
+               <img  src="assets/images/road.png" alt="">
+            </mdb-card-text>
+            <a [routerLink]="['../complaintBox','Road']" mdbBtn color="mdb-color" size="sm" class="waves-light" mdbWavesEffect>Open It</a>
+          </mdb-card-body>
+          <mdb-card-footer class="text-muted teal dark white-text">
+          </mdb-card-footer>
+       </mdb-card>
+
+  </div>
+  <div class="col-md-3 pt-4">
+      <mdb-card class="text-center">
+          <mdb-card-header class="teal dark white-text">
+                  <h5>Sewage Problem Box</h5>
+                  
+          </mdb-card-header>
+          <mdb-card-body >
+            <mdb-card-text class="view rgba-white-slight text-center waves-light" mdbWavesEffect >
+               <img  src="assets/images/waste.png"   alt="">
+            </mdb-card-text>
+            <a [routerLink]="['../complaintBox','Sewage']" mdbBtn color="mdb-color" size="sm" class="waves-light" mdbWavesEffect>Open It</a>
+          </mdb-card-body>
+          <mdb-card-footer class="text-muted teal dark white-text">
+          </mdb-card-footer>
+       </mdb-card>
+
+  </div>
+          
+</div>
+</div>
+
+<br><br>
+
+
+
+
+
+
+
+<br><br>
+<!-- Footer -->
+<footer class="page-footer font-small teal pt-4 ">
+
+  <!-- Footer Text -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">connectingDELHI</h5>
+        <p>
+              Connecting_Delhi is a online complaint portal that will solve many real-life problems like problems related to water, sewage, road, electricity and etc.
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-150 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-md-0 mb-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">Supported By:</h5>
+        <div class="row">
+              <div class="col-md-2">
+                   <img src="assets/images/delhiAdmin.png" style="width:80px;height:70px;border-radius: 4px;"alt="j">
+       
+               </div>
+               <div class="col-md-2">
+                       <img src="assets/images/EDMC.jpg" style="width:80px;height:70px;border-radius: 4px;"alt="">
+       
+               </div>
+               <div class="col-md-2">
+                       <img src="assets/images/NDMC.jpeg" style="width:80px;height:70px;border-radius: 4px;"alt="">
+       
+               </div>
+               <div class="col-md-2">
+                       <img src="assets/images/SDMC.png" style="width:80px;height:70px;border-radius: 4px;"alt="">
+       
+               </div>
+               <div class="col-md-2">
+                       <img src="assets/images/DCB.jpg" style="width:80px;height:70px;border-radius: 4px;"alt="">
+       
+               </div>
+               <div class="col-md-2">
+                      <img src="assets/images/North.jpg" style="width:80px;height:70px;border-radius: 4px;"alt="">
+      
+              </div>
+                              
+         </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Text -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="https://ConnectingIndia.ml"> connectingDELHI.ml</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+
+<!--modal-->

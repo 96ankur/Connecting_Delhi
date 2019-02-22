@@ -1,0 +1,18 @@
+list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.dropdown-item:hover{
+    background-color: #009688 !important;
+    padding:10px; 
+    color:#fff !important;
+    border-radius:5px;
+     box-shadow:10px 10px 5px 0px rgba(0,0,0,0.75);
+    
+
+}
