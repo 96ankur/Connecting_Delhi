@@ -4,14 +4,13 @@ const multer=require('multer');
 const auth = require('../../middleware/auth');
 
 const userSignup=require('./userSignup');
-// const userLogin=require('./user/userLogin');
-// const otpVerify=require('./otpVerify');
-// const registerComplaints=require('./user/registerComplaints');
-// const allComplaints=require('./displayAllComplaints');
-// const forgetPasswordMail=require('./forgetPassMail');
-// const forgetPasswordUrl=require('./forgetPassUrl');
-// const userMyComplaints=require('./user/userMyComplaints');
-// const changeUserPassword=require('./user/changeUserPassword')
+const userLogin=require('./userLogin');
+const otpVerify=require('./otpVerify');
+const registerComplaints=require('./registerCompalints');
+const forgetPasswordMail=require('./forgetPassMail');
+const forgetPasswordUrl=require('./forgetPassUrl');
+const dispComplaints=require('././dispComplaints');
+const changeUserPassword=require('./changeUserPassword')
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -38,6 +37,14 @@ const upload=multer({
 
 
 router.post('/userSignup',userSignup.userSignup);
+router.post('/otpVerify', auth,otpVerify.otpVerify) //it will verify otp when user enters otp and click on verify otp button
+router.post('/userLogin',userLogin.userLogin);
+router.post('/registerComplaints', auth,upload.single('Image'),registerComplaints.registerComplaints);
+router.post('/forgetPasswordMail',forgetPasswordMail.forgetPasswordMail)  // it will send an URL to entered email for changing password
+router.post('/forgetPasswordUrl',forgetPasswordUrl.forgetPasswordUrl)  // it will lead to user to another component for changing password
+router.post('/dispComplaints', auth, dispComplaints.dispComplaints);
+router.post('/changeUserPassword', auth, changeUserPassword.changeUserPassword);
+
 
 
 

@@ -8,10 +8,10 @@ const saltRounds = 10;
 exports.userSignup = async (req, res)=>{
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
-
-    let userDetails = await user.findOne({ userEmail: req.body.userEmail });
+     
+    let userDetails= await    user.findOne({ userEmail: req.body.userEmail })    
     if (userDetails) return res.status(400).send('User already registered...');
-
+    
     if(!validator.isValidNumber(req.body.userAadhar)) return res.status(400).send('Aadhar number is invalid')
 
     userDetails = new user(_.pick(req.body, ['userName', 'userEmail', 'userPassword', 'userAadhar', 'userPhone']));
@@ -22,7 +22,7 @@ exports.userSignup = async (req, res)=>{
     otp=sendOtp.sendOtp(req.body.userEmail);
     await user.findOneAndUpdate({userEmail:req.body.userEmail},{$set:{otpDetails:otp}});
 
-    const token = userDetails.generateAuthToken(userEmail);
+    const token = userDetails.generateAuthToken();
     res.header('x-auth-token', token).send('An OTP is send on the given email');
     
 }

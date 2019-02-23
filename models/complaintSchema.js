@@ -10,7 +10,6 @@ const Schema=mongoose.Schema;
 var complaints=new Schema({
     user:{
         name:String,
-        required: true,
         id:mongoose.Schema.Types.ObjectId
     },
     image:{
@@ -30,8 +29,7 @@ var complaints=new Schema({
         default:Date.now()
     },
     m_corporation:{
-        name:String,
-        required: true,
+        corp_id:String,
         id:mongoose.Schema.Types.ObjectId
     },
     status:{
@@ -54,21 +52,10 @@ var complaints=new Schema({
 
 function validateComplaint(complaint){
     const schema = {
-        user: {
-            name: Joi.string().required(),
-            id: Joi.objectId().required()
-        },
-        image:Joi.string().unique().required(),
         description: Joi.string().min(10).max(100).required(),
-        date: Joi.date().required(),
-        m_corporation:{
-            name: Joi.string().required(),
-            id: Joi.objectId().required()
-        },
-        status: Joi.number().default(1),
+        corp_id:Joi.string().required(),
         category: Joi.string().required(),
         location: Joi.string().required(),
-        support: Joi.number().default(0)
     }
     return Joi.validate(complaint,schema);
 }
