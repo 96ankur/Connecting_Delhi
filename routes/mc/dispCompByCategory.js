@@ -12,7 +12,8 @@ exports.dispCompByCategory= async (req,res)=>{
     const corpId = await mc.findById(req.decodedData._id,{corporationId: true, _id: false});
     if(!corpId) return res.status(404).send('Something went wrong. Please Login again');
 
-    const complaints = await complaint.find({"m_corporation.corp_id":corpId.corporationId,category:req.body.category},{});
+    const complaints = await complaint.find({"m_corporation.corp_id":corpId.corporationId,category:req.body.category},{})
+                                      .cache({key:req.decodedData._id})
     if(complaints.length == 0) return res.status(404).send('Complaints not found');
     
     complaints.forEach(element=>{

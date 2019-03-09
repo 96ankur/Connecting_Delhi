@@ -12,9 +12,8 @@ var complaints=new Schema({
         name:String,
         id:mongoose.Schema.Types.ObjectId
     },
-    image:{
+    Image:{
         type:String,
-        unique: true,
         required:true
     },
     description:{
@@ -25,7 +24,6 @@ var complaints=new Schema({
     },
     date:{
         type:Date,
-        required: true,
         default:Date.now()
     },
     m_corporation:{

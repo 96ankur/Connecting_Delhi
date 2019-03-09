@@ -19,10 +19,15 @@ exports.userSignup = async (req, res)=>{
     userDetails.userPassword = await bcrypt.hash(userDetails.userPassword, salt);
     await userDetails.save();
 
-    otp=sendOtp.sendOtp(req.body.userEmail);
-    await user.findOneAndUpdate({userEmail:req.body.userEmail},{$set:{otpDetails:otp}});
+    otp= await sendOtp.sendOtp(req.body.userEmail);
 
+    if(otp.hasOwnProperty('err')){
+        await user.deleteOne({userEmail:req.body.userEmail});
+        throw otp.err;    // here err is thrown for logging
+    }
+
+    await user.findOneAndUpdate({userEmail:req.body.userEmail},{$set:{otpDetails:otp}});
+    
     const token = userDetails.generateAuthToken();
     res.header('x-auth-token', token).send('An OTP is send on the given email');
-    
 }

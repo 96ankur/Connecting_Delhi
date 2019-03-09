@@ -1,6 +1,7 @@
 const {complaint,validate} = require('../../models/complaintSchema');
 const {user} = require('../../models/userSchema');
 const {mc} = require('../../models/mcSchema');
+const {clearHashInRedis} = require('../../services/cache');
 
 exports.registerComplaints = async(req,res)=>{
     const {error} = validate(req.body);
@@ -15,15 +16,16 @@ exports.registerComplaints = async(req,res)=>{
     newComplaint = new complaint({
         user:{userName:userDetails.userName,
                id:req.decodedData._id},
-        image:req.file.path,
+        Image:req.file.path,
         description:req.body.description,
         m_corporation:{corp_id:req.body.corp_id,
                        id:mcDetails._id},
         category:req.body.category,
         location:req.body.location
     })
-
     await newComplaint.save();
+    
+    clearHashInRedis(mcDetails._id);  // here cached data of complaints are deleted for corporations
 
-    res.send('Your complaint has been redistered successfully');
+    res.send('Your complaint has been registered successfully');
 }

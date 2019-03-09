@@ -30,13 +30,13 @@ mongoose.Query.prototype.exec = async function(){
     
     // if yes, then respond to the request right away and return
     if(cacheValue){
+        // console.log('Redis')
         
-    const doc = JSON.parse(cacheValue);
+        const doc = JSON.parse(cacheValue);
 
-    return Array.isArray(doc)
-            ? doc.map(d=> new this.model(d))
-            : new this.model(doc)
-
+        return Array.isArray(doc)
+                ? doc.map(d=> new this.model(d))
+                : new this.model(doc)
     }
     
     // if no, we need to respond to request and update our cache to store the data
@@ -46,6 +46,7 @@ mongoose.Query.prototype.exec = async function(){
                                                        // it into the Json format
     
     client.hset(this.hashKey, key, JSON.stringify(result));
+    // console.log('Mongodb')
 
     return result;
 }

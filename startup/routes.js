@@ -1,11 +1,13 @@
 const express = require('express');
-const bodyParser=require('body-parser');
+const compression = require('compression');
+// const bodyParser=require('body-parser');
 const user = require('../routes/user/userRoutes');
 const admin = require('../routes/admin/adminRoutes');
 const mc = require('../routes/mc/mcRoutes');
 const error = require('../middleware/error');
 
 module.exports = function(app) {
+  app.use(compression());
   app.use(express.json());
   app.use(express.urlencoded({extended:true}));
 

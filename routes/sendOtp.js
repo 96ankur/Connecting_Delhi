@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
 
 var rand_num
 
-exports.sendOtp=(toEmail)=>{
+exports.sendOtp= async(toEmail)=>{
 
     while(1){
         rand_num=parseInt(Math.random()*100000)
@@ -27,16 +27,16 @@ var mailOptions = {
   text: "Your OTP for Connecting_Registration is: " + rand_num.toString()
 };
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
-
-return {
-     otp:rand_num,
-     time:Date.now()
+  try{
+    const res = await transporter.sendMail(mailOptions);
+    if(res.messageId){
+      return {
+        otp:rand_num,
+        time: Date.now()
+        }
     }
+  }catch(err){
+    return {err}     // this err is sent to userSignup to remove document
+  }
+
 }

@@ -43,9 +43,8 @@ var user = new Schema({
     otpDetails:{
         otp:Number,
         time:{
-            type:Number,
-            default:Date.now()
-        }
+              type:Number
+            }
     }
 })
 
