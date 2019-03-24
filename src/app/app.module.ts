@@ -22,11 +22,13 @@ import { RouterModule } from '@angular/router';
 import {LoginService} from './Services/login.service';
 import {ForgotPasswordService} from './Services/forgot-password.service';
 import {ChangePasswordService} from './Services/change-password.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    appRoutingComponents,  
+    appRoutingComponents,
+     
 
   ],
   imports: [

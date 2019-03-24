@@ -1,34 +1,368 @@
 
 
-/*************
-  login/signup design
-*************/
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  .example-stretched-tabs {
-    max-width: 1000px;
-    text-align: center;
-    margin-left:50px;
-    margin-right:50px;
-    
-  }
-  .mat-form-field{ width:100% !important;
-  }
-  
-  input.ng-valid{
-    color:green;
-  }
+html {
+  font-size: 62.5%; }
 
-  .mat-tab{
-    font-weight: bold !important;
+body {
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    /*font-size: 16px;*/
+    line-height: 1.7;
+    /*1.7 times bigger then predefined height*/
+    color: #777;
+    padding: 2rem;
+    /*1rem= 10px =30/10=3rem*/ 
   }
-  .fa{
-    font-size:24px;
+  
+/*
+HEADER
+*/
+
+  .header 
+   {
+    height: 95vh;
+    /* that every point the height of the box of this element should be 95% of the view port height */
+    background-image: linear-gradient(to right bottom, rgba(0,128,128, 0.8), rgba(40, 180, 133, 0.8)), url(../../assets/images/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /*polygon(x y, x y);*/
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /*polygon(x y, x y);*/
   }
+    .header__logo-box 
+    {
+      position: absolute;
+      top: 4rem;
+      left: 4rem; 
+    }
+    .header__logo 
+    {
+      height: 2.5rem; 
+    }
+    .header__text-box 
+    {
+      position: absolute;
+      top: 40%;
+      /*realation to parent*/
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /*relation to element itself*/
+      text-align: center; 
+    }
+  
+   .heading-primary 
+   {
+    color: #fff;
+    backface-visibility: hidden;
+    /*back part of an element of transform property is visble/hidden for the user */
+    margin-bottom: 6rem; 
+   }
+    .heading-primary--main 
+   {
+      text-transform: uppercase;
+      display: block;
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 1.5rem;
+      animation-name: moveinLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      /*
+      animation-delay: 3s;
+      animation-iteration-count: 3;
+      */ 
+    }
+    .heading-primary--sub {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.2rem;
+      /*
+      animation-name:moveinRight;
+      animation-duration:1s;
+      animation-timing-function:ease-out;
+      */
+      animation: moveinRight 1s ease-out; }
+
+      
+/*
+categories section
+*/
+
+.Categories{
+    
+    padding: 10rem 0;
+    margin-top: -15vh; }
+  
+  
+.steps-box:first-child{
+    text-align: right;
+    padding-right: 10%;
+    margin-top: 40px;
+   }
+   .steps-box:last-child{
+    padding-left:5%;
+    margin-top: 70px; 
+   }
+   
+   .app-screen{
+       width:40%;
+   }
+   .works-step{
+       margin-bottom: 50px;
+   }
+   
+   .works-step:last-of-type{
+       margin-bottom: 80px;
+   }
+   .works-step div{
+       color:linear-gradient(to right, #7ed56f, 	#008080);
+       border:2px solid #7ed56f;
+       display:inline-block;
+       border-radius: 50%;
+       height:55px;
+       width:55px;
+       text-align:center;
+       padding:5px;
+       float:left;
+       font-size:150%;
+       margin-right:25px;
+   }
+   
+
+   .btn-app:link,
+   .btn-app:visited{
+       border:0;
+   }
+   .btn-app img{
+       height:50px;
+       width:auto;
+       margin-right:10px;
+   }
+   
+
+
+
+/*
+Animations
+*/
+
+@keyframes moveinLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-10rem); }
+    /*
+      60%{
+          transform: rotate(180deg);
+      } 
+      */
+    80% {
+      transform: translateX(1rem); }
+    100% {
+      opacity: 1;
+      transform: translate(0); } }
+  
+  @keyframes moveinRight {
+    0% {
+      opacity: 0;
+      transform: translateX(10rem); }
+    80% {
+      transform: translateX(-1rem); }
+    100% {
+      opacity: 1;
+      transform: translate(0); } }
+  
+  @keyframes moveinBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem); }
+    100% {
+      opacity: 1;
+      transform: translateY(0); } }
+  
+  /*
+  Buttons
+  */    
+  .btn:link, .btn:visited 
+  {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: .5rem 3rem;
+    /*T B L R OR T/B L/R*/
+    /*right now its inline element so it occupies over other element*/
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    /*transition property always specifed on initial state*/
+    position: relative;
+    font-size: 1.6rem; 
+  }
+  .btn:hover 
+  {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /*x-Dir y-Dir Blur rgba(color of the shadow to be transparent) */ 
+  }
+   .btn:hover::after 
+ {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; 
+ }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 10rem rgba(0, 0, 0, 0.2); }
+ 
+    .btn--white {
+    background-color: #fff;
+    color: #777; }
+ 
+    .btn--white::after {
+      background-color: #fff; }
+ 
+      .btn--green {
+    background-color: #55c57a;
+    color: #fff; }
+ 
+    .btn--green::after {
+      background-color: #55c57a; }
+ 
+      .btn::after {
+     content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  
+    .btn--animated {
+    animation: moveinBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    /*automatically applies this style of the 0% before the animation starts */ }
+
+
+    .btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 0.1rem solid #55c57a;
+  padding: .3rem;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+  /*
+  UTILITY CLASSES
+  */
+  
+.u-center-text {
+    text-align: center; }
+  
+  .u-margin-bottom-small {
+    margin-bottom: 1.5rem; }
+  
+  .u-margin-bottom-medium {
+    margin-bottom: 4rem; }
+  
+  .u-margin-bottom-big {
+    margin-bottom: 8rem; }
+  
+  .u-margin-top-big {
+    margin-top: 8rem; }
+  
+  .u-margin-top-huge {
+    margin-top: 10rem; }
+
+/*
+headings
+*/    
+
+.heading-secondary {
+    font-size: 2.5rem;
+    font-weight: 500;
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, 	#008080);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: .1rem;
+    transition: all .2s; 
+   }
+    
+/*
+MEDIA QUERIES
+*/
+
+/*big computer to 1200px(width smaller than 1140px row)*/
+@media only screen and (max-width:1200px){
+
+}
+
+/*small tablet to big tablet from 481px to 1023 px*/
+@media only screen and (max-width:1023px){
+ section{padding:60px 0;}
+    
+   .steps-box{margin-top:10px;}
+    .steps-box:last-child{margin-top:10px;} 
+   .works-step{margin-bottom: 40px;}
+   .works-step:last-of-type{margin-bottom: 50px;}
+    .app-screen{width:50%;}
+ 
+}
+
+/*media quiery for small phones to small tablets: 480px to 767px*/
+@media only screen and (max-width:767px){
+  h1{font-size:180%;}  
+  h2{font-size:150%;}
+  
+  .works-step{margin-bottom: 20px;}
+  .works-step:last-of-type{margin-bottom: 20px;}
+  .works-step div{
+    height:40px;
+    width:40px;
+    padding:4px;
+    margin-right:15px;
+    font-size: 120%;
+}
+
+.steps-box:first-child{text-align: center;   }
+.app-screen{width:40%;}
+    
+}
+
+/*media query for small phones 0 to 480px*/
+@media only screen and (max-width:480px){
+  section{padding:25px 0;}
+ 
+}
+
+
+/*footer*/
+
+footer{
+    
+    /* that every point the height of the box of this element should be 95% of the view port height */
+     background-position: botom;
+      position: relative;
+      -webkit-clip-path: polygon(0 45%, 100% 0%, 100% 100%, 0 99%);
+      clip-path: polygon(0 45%, 100% 0%, 100% 100%, 0 99%);
+  
+      
+    }
+  
+  
+  
