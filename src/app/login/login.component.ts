@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../Services/login.service';
 import { Router } from '@angular/router';
@@ -38,12 +37,12 @@ export class LoginComponent implements OnInit {
  
   onSubmitUserLoginForm(value){
    this.loginService.login(value).subscribe((res:any)=>{
-    if(res.success){
-      sessionStorage.setItem('tkn',res.token)
-      this.route.navigate(['user'])
-    }else{
-      window.alert(res.msg)
-    }
+      if(res.status == 200){
+        sessionStorage.setItem('x-auth-token',res.body)
+        this.route.navigate(['user'])
+      }
+   },error =>{
+     window.alert(error/*'Invalid email or password.'*/);
    })
   }
 }

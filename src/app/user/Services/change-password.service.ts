@@ -8,15 +8,16 @@ export class ChangePasswordService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   changePassword(value){
     return this._http.post('http://localhost:5000/user/changeUserPassword',{
       oldPassword:value.oldPassword,
       newPassword:value.newPassword,
-      confirmPassword:value.confirmPassword
-    },{headers:this.header})
+    },{
+      headers:this.header,
+      responseType: 'text',
+      observe: 'response'})
   }
-
 }

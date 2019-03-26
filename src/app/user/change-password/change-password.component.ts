@@ -14,7 +14,7 @@ export class ChangePasswordComponent implements OnInit {
   public token;
   constructor( private fb: FormBuilder,
                private ChangePasswordService:ChangePasswordService, private route:Router) {
-                this.token=sessionStorage.getItem('tkn')
+                this.token=sessionStorage.getItem('x-auth-token')
                 if(this.token==""||!this.token||this.token==undefined||this.token==null){
                   window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
                   (this.route.navigate(['home']))
@@ -37,17 +37,17 @@ export class ChangePasswordComponent implements OnInit {
 
  onSubmitChangePasswordForm(value){
   this.ChangePasswordService.changePassword(value).subscribe((res:any)=>{
-    if(res.success){
-      window.alert(res.msg);
+    if(res.status == 200){
+      window.alert(res.body);
       this.route.navigate(['user']);
     }else{
-      window.alert(res.msg);
+      window.alert(res.body);
     }
   })
 }
 
 logout(){
-  sessionStorage.removeItem('tkn')
+  sessionStorage.removeItem('x-auth-token')
   this.route.navigate(['home'])
 }
 }

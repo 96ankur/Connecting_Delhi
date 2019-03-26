@@ -9,20 +9,24 @@ export class RegisterCompService {
 
   header=new HttpHeaders({
     // "Content-Type":"multipart/form-data",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   registerComplaints(value){
     let data={
                 description:value.description,
-                m_corporation:value.handleBy,
+                corp_id:value.handleBy,
                 category:value.category,
                 location:value.area
               }
     const fd=new FormData();
     fd.append('data',JSON.stringify(data))
     fd.append('Image',value.selectedFile,value.selectedFile.name);
-    return this._http.post('http://localhost:5000/user/registerComplaints',fd,{headers:this.header})
+    return this._http.post('http://localhost:5000/user/registerComplaints',fd,{
+                            headers:this.header,
+                            responseType: 'text',
+                            observe: 'response'
+                          })
   }
 
 }

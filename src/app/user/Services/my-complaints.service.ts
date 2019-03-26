@@ -8,11 +8,14 @@ export class MyComplaintsService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
   
   myComplaints(){
-    console.log(this.header);
-    return this._http.get('http://localhost:5000/user/myComplaints',{headers:this.header})
+    return this._http.post('http://localhost:5000/user/dispComplaints',{type:'personal'},{
+                            headers:this.header,
+                            responseType: 'text',
+                            observe: 'response'
+                          })
   }
 }

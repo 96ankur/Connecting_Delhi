@@ -8,10 +8,14 @@ export class PostService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   post(){
-    return this._http.get('http://localhost:5000/user/allComplaints',{headers:this.header});
+    return this._http.post('http://localhost:5000/user/dispComplaints',{},{
+                           headers:this.header,
+                           responseType: 'text',
+                           observe: 'response'
+                          });
   }
 }

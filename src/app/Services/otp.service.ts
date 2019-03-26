@@ -8,12 +8,11 @@ export class OtpService {
 
     header=new HttpHeaders({
       "Content-Type":"application/json",
-      "client-token":sessionStorage.getItem("tkn")
+      "client-token":sessionStorage.getItem("x-auth-token")
     });
 
     otpVerify(value){
       return this._http.post('http://localhost:5000/user/otpVerify',{
-        otp:value.otp},{headers:this.header});
-    }
- 
+        otp:value.otp},{headers:this.header,responseType: 'text',observe: 'response'});
+    } 
 }

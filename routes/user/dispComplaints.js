@@ -12,10 +12,10 @@ exports.dispComplaints = async(req,res)=>{
     if(req.body.type == 'personal'){  // personal will display complaints that belongs to a user
         complaints = await complaint.find({'user.id':req.decodedData._id})
                                     .cache({key:req.decodedData._id})
-        if (complaints.length == 0)  return res.status(404).send('You have not yet registered any complaint');
+        if (complaints.length == 0)  return res.status(204).send();
     }else{
         complaints = await complaint.find();
-        if (complaints.length == 0)  return res.status(404).send('You have not yet registered any complaint');
+        if (complaints.length == 0)  return res.status(204).send();
     }
 
     complaints.forEach(element=>{

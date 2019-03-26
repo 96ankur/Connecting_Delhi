@@ -38,25 +38,24 @@ export class SignupComponent implements OnInit {
 
   onSubmitUserSignupForm(value){
     this.SignupService.signup(value).subscribe((res:any)=>{
-      if(res.success){
-        window.alert(res.msg);
-        sessionStorage.setItem('tkn',res.token)
+      if(res.status == 200){
+        window.alert(res.body);
+        sessionStorage.setItem('x-auth-token',res.headers.get('x-auth-token'))
         this.flag=true;
       }else{
-        window.alert(res.msg)
+        window.alert(res.body)
       }
     })
   }
   onSubmitUserSignupOTPForm(value){
     this.OtpService.otpVerify(value).subscribe((res:any)=>{
-      if(res.success){
-        window.alert(res.msg);
-        sessionStorage.setItem('tkn',res.token)
+      if(res.status == 200){
+        window.alert(res.body);
+        sessionStorage.setItem('x-auth-token',res.headers.get('x-auth-token'))
         this.route.navigate(['user'])
       }else{
-        window.alert(res.msg)
+        window.alert(res.body)
       }
     })
   }
-
 }

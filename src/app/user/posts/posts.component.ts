@@ -13,7 +13,7 @@ export class PostsComponent implements OnInit {
   public token;
 
   constructor(private PostService:PostService,private route:Router) { 
-    this.token=sessionStorage.getItem('tkn')
+    this.token=sessionStorage.getItem('x-auth-token')
                 if(this.token==""||!this.token||this.token==undefined||this.token==null){
                   window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
                   (this.route.navigate(['home']))
@@ -22,16 +22,16 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.PostService.post().subscribe((res:any)=>{
-      if(res.success){
-        this.complaints=res.complaints;
+      if(res.status == 200){
+        this.complaints=JSON.parse(res.body);
       }else{
-        window.alert(res.msg);
+        window.alert('No complaint regisdtered');
       }
     })
   }
 
   logout(){
-    sessionStorage.removeItem('tkn')
+    sessionStorage.removeItem('x-auth-token')
     this.route.navigate(['home'])
   }
 }

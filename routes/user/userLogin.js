@@ -8,10 +8,10 @@ exports.userLogin = async(req, res)=>{
   if (error) return res.status(400).send(error.details[0].message);
 
   const userDetails = await user.findOne({userEmail:req.body.userEmail},{userPassword: true});
-  if (!userDetails)  return res.status(404).send('Either email or password is incorrect...');
+  if (!userDetails)  return res.status(401).send();
   
   const validPassword = await bcrypt.compare(req.body.userPassword, userDetails.userPassword);
-  if (!validPassword) return res.status(400).send('Invalid email or password.');
+  if (!validPassword) return res.status(401).send();
     
   const token = userDetails.generateAuthToken(userDetails._id);
   res.send(token);

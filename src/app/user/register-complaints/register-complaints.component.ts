@@ -42,7 +42,7 @@ export class RegisterComplaintsComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private http:HttpClient, private RegisterCompService:RegisterCompService,
               private route:Router) {
-                this.token=sessionStorage.getItem('tkn')
+                this.token=sessionStorage.getItem('x-auth-token')
                 if(this.token==""||!this.token||this.token==undefined||this.token==null){
                   window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
                   (this.route.navigate(['home']))
@@ -74,8 +74,8 @@ export class RegisterComplaintsComponent implements OnInit {
   onSubmitUserComplaintsForm(value){
     value.selectedFile=this.selectedFile;
     this.RegisterCompService.registerComplaints(value).subscribe((res:any)=>{
-      if(res.success){
-        window.alert(res.msg);
+      if(res.status == 200){
+        window.alert(res.body);
         this.route.navigate(['user']);
       }else{
         window.alert(res.msg);
@@ -84,7 +84,7 @@ export class RegisterComplaintsComponent implements OnInit {
   }
 
   logout(){
-    sessionStorage.removeItem('tkn')
+    sessionStorage.removeItem('x-auth-token')
     this.route.navigate(['home'])
   }
 }

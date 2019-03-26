@@ -7,13 +7,13 @@ export class SignupService {
   constructor(private _http:HttpClient) { }
 
   signup(value){
-    return this._http.post('http://localhost:5000/user/signupUser',{
+    return this._http.post('http://localhost:5000/user/userSignup',{
       userName:value.userName,
       userPhone:value.phone,
       userEmail:value.email,
       userPassword:value.password,
       userAadhar:value.aadharNo
-    })
+    },{responseType: 'text',observe: 'response'})
   }
 
 }

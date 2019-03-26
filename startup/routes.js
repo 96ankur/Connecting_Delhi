@@ -12,6 +12,7 @@ module.exports = function(app) {
   app.use(express.urlencoded({extended:true}));
 
   app.use((req, res, next) => {
+    res.setHeader("Access-Control-Expose-Headers", "x-auth-token");
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type,client-token,x-auth-token');
