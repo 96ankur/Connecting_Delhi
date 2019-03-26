@@ -1,57 +1,55 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark teal navbar-fixed-top">
 
-<!--section body-->
-<div class="container pt-4">
-    <br>
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10 text-center" style="color:teal;">
-         <img src="assets/images/EDMC.jpg" style="height:130px;width:150px;" alt=""> <span class="org" style="text-transform:uppercase;">East Delhi Municipal Corporation</span>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-</div>    
-    <br>
-    <br>
-<div class="container ">
-    <div class="row">
-        <div class="col-md-4 pt-4">
-                <mdb-card>
-                        <div class="view rgba-white-slight waves-light" mdbWavesEffect style="background: linear-gradient(to bottom right, #6452E9, #639FF9);color:#ffffff;">
-                          <!-- Card img -->
-                          <h4 class="text-center">Total Complaints</h4>
-                          <h5 class="text-center">5</h5>
-                          <a> <div class="mask"></div> </a>
-                        </div>
+        <!-- Navbar brand -->
+        <mdb-navbar-brand><a class="navbar-brand" href="#">ConnectingDELHI</a></mdb-navbar-brand>
+    
+        <!-- Collapsible content -->
+        <links>
+    
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+    
+                
+                <li class="nav-item">
+                    <a  routerLink="../dashboard" class="nav-link waves-light" mdbWavesEffect mdbWavesEffect>
+                       Dashboard
+                    </a>
+                </li>
+                
+                <!-- Dropdown -->
+                <li class="nav-item dropdown teal"  dropdown dropdown-primarys>
+                    <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                        Profile<i class="fa fa-user"></i><span class="caret"></span></a>
+                    <div *dropdownMenu class="dropdown-menu dropdown " role="menu">
+                        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="../login">Logout</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="../changePassword">Change Password</a>
                         
-                </mdb-card>
-        </div> 
-        <div class="col-md-4 pt-4">
-                <mdb-card>
-                        <div class="view rgba-white-slight waves-light" mdbWavesEffect style="background: linear-gradient(to bottom right, #56ab2f, #a8e063);color:#ffffff;">
-                          <!-- Card img -->
-                          <h4 class="text-center">Solved Complaints</h4>
-                          <h5 class="text-center">5</h5>
-                          <a> <div class="mask"></div> </a>
-                        </div>
-                        
-                </mdb-card>
-        </div> 
-        <div class="col-md-4 pt-4">
-                <mdb-card style="">
-                        <div class="view rgba-white-slight waves-light" mdbWavesEffect style="background: linear-gradient(to bottom right,#ff512f,#dd2476);color:#ffffff;">
-                          <!-- Card img -->
-                          <h4 class="text-center" style="color:#ffffff;">Pending Complaints</h4>
-                          
-                          <h5 class="text-center">5</h5>
-                          <a> <div class="mask"></div> </a>
-                        </div>
-                        
-                </mdb-card>
-        </div>
+                    </div>
+                </li>
+    
+            </ul>
+            <!-- Links -->
+    
+        </links>
+        <!-- Collapsible content -->
+    
+    </mdb-navbar>
+    <!--/.Navbar-->
+    <br>
+
+    <div class="container pt-4" [hidden]="hideElement">
+            <div class="row" style="text-align: center;">
+                <div class="col-md-12">
+                    <h2 class="heading-secondary text-center">
+                        <img src="assets/images/EDMC.jpg"  class=" org " style="height:130px;width:150px;"  alt="">
+                         East Delhi Municipal Corporation
+                    </h2>
         
-    </div>
-</div>
-
+                </div>
+            </div>
+        </div>
+        <br>
 
     <div class="container">
 
@@ -59,7 +57,7 @@
     <div class="row">
       <div class="col-md-6  pt-4">
         <mat-card>
-            <h3 class="text-center">No. of Complaints Registered </h3>
+            <h3 class="text-center heading-secondary1">No. of Complaints Registered </h3>
             <hr>
             <div style="display: block">  
                 <canvas mdbChart
@@ -77,7 +75,7 @@
       </div>
       <div class="col-md-6  pt-4">
           <mat-card>
-              <h3 class="text-center">Complaints Solved In Months</h3>
+              <h3 class="text-center heading-secondary1">Complaints Solved In Months</h3>
               <hr>
               <div style="display: block">
                   <canvas mdbChart
@@ -97,7 +95,7 @@
     <div class="row">
         <div class="col-md-6  pt-4">
           <mat-card>
-              <h3 class="text-center">Complaints Pending In Months</h3>
+              <h3 class="text-center heading-secondary1">Complaints Pending In Months</h3>
               <hr>
               <div style="display: block">
                   <canvas mdbChart
@@ -115,7 +113,7 @@
         </div>
         <div class="col-md-6  pt-4">
             <mat-card>
-                <h3 class="text-center">Complaints In Each Category </h3>
+                <h3 class="text-center heading-secondary1">Complaints In Each Category </h3>
                  <hr>      
                  <div style="display: block; " >
                     <canvas mdbChart style=" height:100px;"
@@ -136,5 +134,31 @@
   </div>
   
   
-  <br><br><br>
+  <br><br>
+  <div class="row pt-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+                <footer class="page-footer font-small teal pt-4 ">
+                         <br><br><br>
+                        <!-- Footer Text -->
+                        <div class="container-fluid text-center text-md-left">
+                        </div>
+                        <!-- Footer Text -->
+                      
+                        <!-- Copyright -->
+                        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                          <a href="https://ConnectingIndia.ml"> ConnectingDelhi.ml</a>
+                        </div>
+                        <!-- Copyright -->
+                      
+                      </footer>
+                      <!-- Footer -->
+                      
+                
+        </div>
+        <div class="col-md-1"></div>
+    </div>      
+          
+          
+ 
   

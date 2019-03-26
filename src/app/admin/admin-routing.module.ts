@@ -32,30 +32,29 @@ const routes: Routes = [
 
   {
     path:'dashboard',
-    component:DashboardComponent,
-    children:[
-      {
-        path:'delhiCantonmentBoardDetails',
-        component:DCBdetailsComponent
-      },
-      {
-        path:'northDelhiMunicipalCorporationDetails',
-        component:NorthDMCdetailsComponent
-      },
-      {
-        path:'southDelhiMunicipalCorporationDetails',
-        component:SDMCdetailsComponent,
-      },
-      {
-        path:'eastDelhiMunicipalCorporationDetails',
-        component:EDMCdetailsComponent
-      },
-      {
-        path:'newDelhiMunicipalCorporationDetails',
-        component:NewDMCdetailsComponent
-      },
-    
-    ]
+    component:DashboardComponent,  
+  },
+  {
+    path:'delhiCantonmentBoardDetails',
+    component:DCBdetailsComponent
+  },
+ 
+  {
+    path:'southDelhiMunicipalCorporationDetails',
+    component:SDMCdetailsComponent,
+  },
+  {
+    path:'eastDelhiMunicipalCorporationDetails',
+    component:EDMCdetailsComponent
+  },
+  {
+    path:'newDelhiMunicipalCorporationDetails',
+    component:NewDMCdetailsComponent
+  },
+
+  {
+    path:'northDelhiMunicipalCorporationDetails',
+    component:NorthDMCdetailsComponent
   },
   {
     path:'changePassword',
