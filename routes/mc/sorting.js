@@ -4,7 +4,6 @@ const Joi = require('joi');
 
 var formattedComp;
 exports.sorting = async(req,res)=>{
-    console.log(req.body)
     formattedComp=[];
 
     const {error} = validate(req.body);

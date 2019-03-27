@@ -8,12 +8,12 @@ export class GraphService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   graph(corporation){
-    return this._http.post('http://localhost:5000/user/complaintsGraph',{
-      m_corporation:corporation
-    },{headers:this.header})
+    return this._http.post('http://localhost:5000/admin/complaintsGraph',{
+      corpId:corporation
+    },{headers:this.header, responseType: 'text',observe: 'response'})
   }
 }

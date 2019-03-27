@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplaintsCountService } from '../Services/complaints-count.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { GraphService } from '../Services/graph.service';
 
 @Component({
   selector: 'app-north-dmcdetails',
@@ -11,11 +12,16 @@ export class NorthDMCdetailsComponent implements OnInit {
 
     public complaintsCount={};
     public token;
+    public corporation;
+    public TC=[10];
+    public SC=[];
+    public PC=[];
+    public PI=[];
   
   //total complaints graphs logic
   public chartTypeTotal:string = 'bar';
   public chartDatasetsTotal:Array<any> = [
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Total Complaints'}
+        {data: this.TC, label: 'Total Complaints'}
     ];
   public chartLabelsTotal:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
   public chartColorsTotal:Array<any> = [
@@ -36,7 +42,7 @@ export class NorthDMCdetailsComponent implements OnInit {
   //solved complaints graph
   public chartTypeSolved:string = 'bar';
   public chartDatasetsSolved:Array<any> = [
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Solved Complaints'}
+        {data: this.SC, label: 'Solved Complaints'}
     ];
   public chartLabelsSolved:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
   public chartColorsSolved:Array<any> = [
@@ -57,7 +63,7 @@ export class NorthDMCdetailsComponent implements OnInit {
   //Pending complaints graphs logic  
   public chartTypePending:string='bar';
   public chartDatasetsPending:Array<any> = [
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Pending Complaints'}
+    {data: this.PC, label: 'Pending Complaints'}
 ];
 public chartLabelsPending:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
 public chartColorsPending:Array<any> = [
@@ -76,9 +82,9 @@ public chartOptionsPending:any = {
 };
   //Pending complaints graphs logic  
   public chartTypeCategory:string='pie';
-  public chartDataCategory:Array<any> = [300, 50, 100, 40, 120];
+  public chartDataCategory:Array<any> = this.PI;
 
-    public chartLabelsCategory:Array<any> = ['Sewage', 'Water', 'Roads', 'Electricity', 'Others'];
+    public chartLabelsCategory:Array<any> = ['Sewage', 'Water', 'Roads', 'Electricity'];
 
     public chartColorsCategory:Array<any> = [{
         hoverBorderColor: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)'],
@@ -95,7 +101,8 @@ public chartOptionsPending:any = {
   public chartHovered(e: any): void { }
 
 
-  constructor(private complaintsCountService:ComplaintsCountService, private route:Router) { 
+  constructor(private complaintsCountService:ComplaintsCountService, private route:Router,
+              private router: ActivatedRoute, private graphService:GraphService) { 
     this.token=sessionStorage.getItem('x-auth-token')
      if(this.token==""||!this.token||this.token==undefined||this.token==null){
        window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
@@ -108,9 +115,41 @@ public chartOptionsPending:any = {
         if(res.status == 200){
             this.complaintsCount=JSON.parse(res.body)
         }else{
-            window.alert(res.msg)
+            window.alert(res.body)
         }
     })
-}
 
+    switch(this.router.routeConfig.component.name){
+        case 'NorthDMCdetailsComponent':
+          this.corporation = 'NDMC';
+          break;
+        
+        case 'DCBdetailsComponent':
+          this.corporation = 'DCB';
+        break;
+
+        case 'SDMCdetailsComponent':
+          this.corporation = 'SDMC';
+        break;
+
+        case 'NewDMCdetailsComponent':
+          this.corporation = 'NewDMC';
+        break;
+        
+        case 'EDMCdetailsComponent':
+          this.corporation = 'EDMC';
+        break;
+    }
+    this.graphService.graph(this.corporation).subscribe((res:any)=>{
+      if(res.status == 200){
+          let data=JSON.parse(res.body);
+          this.TC = data.TC;
+          this.PC = data.PC;
+          this.SC = data.SC;
+          this.PI = data.PI;
+        }else{
+          window.alert(res.body)
+      }
+    })
+  }
 }
