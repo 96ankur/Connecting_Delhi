@@ -17,7 +17,7 @@ export class ComplaintBoxComponent implements OnInit {
   constructor(private route:ActivatedRoute,private router:Router,
               private DisplayComplaintsService:DisplayComplaintsService,private Sorting:SortingService,
               private StatusChangeService:StatusChangeService) {
-    this.token=sessionStorage.getItem('tkn')
+    this.token=sessionStorage.getItem('x-auth-token')
     if(this.token==""||!this.token||this.token==undefined||this.token==null){
         window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
         (this.router.navigate(['home']))
@@ -30,37 +30,39 @@ export class ComplaintBoxComponent implements OnInit {
       this.category=params.get('category');
 
       this.DisplayComplaintsService.complaints(this.category).subscribe((res:any)=>{
-        if(res.success){
-          this.complaints=res.complaints;
+        if(res.status == 200){
+          this.complaints=JSON.parse(res.body);
         }else{
-          window.alert(res.msg);
+          window.alert('Complaints not found');
         }
+      },error =>{
+        window.alert('Something went wrong. Please Login again');
       })
     });
   }
 
   sorting(status){
     this.Sorting.sort({status:status,category:this.category}).subscribe((res:any)=>{
-      if(res.success){
-        this.complaints=res.complaints;
+      if(res.status == 200){
+        this.complaints=JSON.parse(res.body);
       }else{
-        window.alert(res.msg);
+        window.alert('Complaints not found');
       }
     })
   }
 
   statusChange(id){
     this.StatusChangeService.updateStatus(id).subscribe((res:any)=>{
-      if(res.success){
-        
+      if(res.status == 200){
+        window.alert(res.body)
       }else{
-        window.alert(res.msg);
+        window.alert('Something went wrong');
       }
     })
   }
 
   logout(){
-    sessionStorage.removeItem('tkn')
+    sessionStorage.removeItem('x-auth-token')
     this.router.navigate(['home'])
   }
 

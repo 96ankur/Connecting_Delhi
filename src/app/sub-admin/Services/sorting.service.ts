@@ -8,13 +8,13 @@ export class SortingService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   sort(value){
-    return this._http.post('http://localhost:5000/user/sorting',
+    return this._http.post('http://localhost:5000/mc/sorting',
     {status:value.status,
      category:value.category},
-    {headers:this.header})
+    {headers:this.header,responseType: 'text',observe: 'response'})
   }
 }

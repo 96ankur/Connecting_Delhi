@@ -8,12 +8,12 @@ export class ComplaintsCountService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   count(corporation){
-    return this._http.post('http://localhost:5000/user/complaintsCount',{
-      m_corporation:corporation
-    },{headers:this.header})
+    return this._http.post('http://localhost:5000/admin/complaintsCount',{
+      corp_id:corporation
+    },{headers:this.header, responseType: 'text',observe: 'response'})
   }
 }

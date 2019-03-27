@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplaintsCountService } from '../Services/complaints-count.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-north-dmcdetails',
@@ -9,6 +10,7 @@ import { ComplaintsCountService } from '../Services/complaints-count.service';
 export class NorthDMCdetailsComponent implements OnInit {
 
     public complaintsCount={};
+    public token;
   
   //total complaints graphs logic
   public chartTypeTotal:string = 'bar';
@@ -93,15 +95,20 @@ public chartOptionsPending:any = {
   public chartHovered(e: any): void { }
 
 
-  constructor(private complaintsCountService:ComplaintsCountService) { }
+  constructor(private complaintsCountService:ComplaintsCountService, private route:Router) { 
+    this.token=sessionStorage.getItem('x-auth-token')
+     if(this.token==""||!this.token||this.token==undefined||this.token==null){
+       window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
+       (this.route.navigate(['home']))
+       }
+  }
 
   ngOnInit() {
     this.complaintsCountService.count('NDMC').subscribe((res:any)=>{
-        if(res.success){
-            this.complaintsCount=res.count
+        if(res.status == 200){
+            this.complaintsCount=JSON.parse(res.body)
         }else{
             window.alert(res.msg)
-
         }
     })
 }

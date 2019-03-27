@@ -5,9 +5,9 @@ exports.complaintsCount= async (req,res)=>{
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     
-    const totalComplaints = await complaint.countDocuments({"m_corporation.name":req.body.m_corporation})
-    const pendingComplaints = await complaint.countDocuments({"m_corporation.name":req.body.m_corporation,status:1})
-    const completedComplaints = await complaint.countDocuments({"m_corporation.name":req.body.m_corporation,status:3})
+    const totalComplaints = await complaint.countDocuments({"m_corporation.corp_id":req.body.corp_id})
+    const pendingComplaints = await complaint.countDocuments({"m_corporation.corp_id":req.body.corp_id,status:1})
+    const completedComplaints = await complaint.countDocuments({"m_corporation.corp_id":req.body.corp_id,status:3})
     
     const count = {
         totalComplaints:totalComplaints,

@@ -33,12 +33,14 @@ export class LoginComponent implements OnInit {
   
   onSubmitAdminLoginForm(value){
     this.AdminLoginService.login(value).subscribe((res:any)=>{
-      if(res.success){
-        sessionStorage.setItem('tkn',res.token)
+      if(res.status == 200){
+        sessionStorage.setItem('x-auth-token',res.body)
         this.route.navigate(['admin/dashboard'])
       }else{
         window.alert(res.msg)
       }
+    },error =>{
+      window.alert('Invalid email or password.');
     })
    }
 }

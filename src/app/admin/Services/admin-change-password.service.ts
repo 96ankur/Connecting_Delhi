@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +12,18 @@ export class AdminChangePasswordService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   changePassword(value){
-    return this._http.post('http://localhost:5000/user/changeUserPassword',{
+    return this._http.post('http://localhost:5000/user/changeAdminPassword',{
       oldPassword:value.oldPassword,
       newPassword:value.newPassword,
-      confirmPassword:value.confirmPassword
-    },{headers:this.header})
+    },{headers:this.header,responseType: 'text',observe: 'response'})
+    .pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse){
+    return throwError(error.message || "Error")
   }
 }

@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.route.navigate(['user'])
       }
    },error =>{
-     window.alert(error/*'Invalid email or password.'*/);
+     window.alert('Invalid email or password.');
    })
   }
 }

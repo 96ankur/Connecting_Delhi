@@ -8,9 +8,15 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   hideElement = false;
-  
+  public token;
+
   
 constructor(private router: Router) {
+  this.token=sessionStorage.getItem('x-auth-token')
+                if(this.token==""||!this.token||this.token==undefined||this.token==null){
+                  window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
+                  (this.router.navigate(['home']))
+                  }
   this.router.events.subscribe((event) => {
     if (event instanceof NavigationEnd) {
       if (event.url === '/dashboard') {
@@ -22,6 +28,11 @@ constructor(private router: Router) {
   });
 }
   ngOnInit() {
+  }
+
+  logout(){
+    sessionStorage.removeItem('x-auth-token')
+    this.router.navigate(['home'])
   }
 
 }

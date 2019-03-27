@@ -4,6 +4,7 @@ const Joi = require('joi');
 
 var formattedComp;
 exports.sorting = async(req,res)=>{
+    console.log(req.body)
     formattedComp=[];
 
     const {error} = validate(req.body);
@@ -14,7 +15,7 @@ exports.sorting = async(req,res)=>{
 
     const complaints = await complaint.find({"m_corporation.corp_id": corpId.corporationId,category:req.body.category,status:req.body.status},
         { _id:false})
-    if(complaints.length == 0) return res.status(404).send('Complaints not found');
+    if(complaints.length == 0) return res.status(204).send();
 
     complaints.forEach(element=>{
         formattedComp.push({

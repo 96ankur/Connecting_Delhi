@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ComplaintsCountService } from '../Services/complaints-count.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edmcdetails',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edmcdetails.component.scss']
 })
 export class EDMCdetailsComponent implements OnInit {
+
+  public complaintsCount={};
+  public token;
  //total complaints graphs logic
  public chartTypeTotal:string = 'bar';
  public chartDatasetsTotal:Array<any> = [
@@ -88,9 +93,22 @@ public chartOptionsPending:any = {
  public chartClicked(e: any): void { }
  public chartHovered(e: any): void { }
 
-  constructor() { }
+ constructor(private complaintsCountService:ComplaintsCountService, private route:Router) { 
+  this.token=sessionStorage.getItem('x-auth-token')
+   if(this.token==""||!this.token||this.token==undefined||this.token==null){
+     window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
+     (this.route.navigate(['home']))
+     }
+}
 
-  ngOnInit() {
-  }
+ngOnInit() {
+  this.complaintsCountService.count('EDMC').subscribe((res:any)=>{
+      if(res.status == 200){
+          this.complaintsCount=JSON.parse(res.body)
+      }else{
+          window.alert(res.msg)
+      }
+  })
+}
 
 }

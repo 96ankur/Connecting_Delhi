@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 })
 export class NorthDelhiComponent implements OnInit {
 
-  public complaintsCount=[];
+  public complaintsCount={};
   public token;
 
   constructor(private complaintsCountService:ComplaintsCountService,private router:Router) {
-    this.token=sessionStorage.getItem('tkn')
+    this.token=sessionStorage.getItem('x-auth-token')
     if(this.token==""||!this.token||this.token==undefined||this.token==null){
         window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
         (this.router.navigate(['home']))
@@ -22,17 +22,16 @@ export class NorthDelhiComponent implements OnInit {
 
   ngOnInit() {
     this.complaintsCountService.count('NDMC').subscribe((res:any)=>{
-        if(res.success){
-            this.complaintsCount=res.count
+        if(res.status == 200){
+            this.complaintsCount=JSON.parse(res.body)
         }else{
-            window.alert(res.msg)
+            window.alert(res.body)
         }
     })
 }
 
 logout(){
-    sessionStorage.removeItem('tkn')
+    sessionStorage.removeItem('x-auth-token')
     this.router.navigate(['home'])
   }
-
 }

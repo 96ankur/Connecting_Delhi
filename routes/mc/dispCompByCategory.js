@@ -10,11 +10,11 @@ exports.dispCompByCategory= async (req,res)=>{
     if(error) return res.status(404).send(error.details[0].message);
 
     const corpId = await mc.findById(req.decodedData._id,{corporationId: true, _id: false});
-    if(!corpId) return res.status(404).send('Something went wrong. Please Login again');
+    if(!corpId) return res.status(404).send();
 
     const complaints = await complaint.find({"m_corporation.corp_id":corpId.corporationId,category:req.body.category},{})
                                       .cache({key:req.decodedData._id})
-    if(complaints.length == 0) return res.status(404).send('Complaints not found');
+    if(complaints.length == 0) return res.status(204).send();
     
     complaints.forEach(element=>{
         formattedComp.push({
