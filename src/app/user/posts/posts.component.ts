@@ -25,7 +25,7 @@ export class PostsComponent implements OnInit {
       if(res.status == 200){
         this.complaints=JSON.parse(res.body);
       }else{
-        window.alert('No complaint regisdtered');
+        window.alert('No complaint registered');
       }
     })
   }

@@ -2,7 +2,7 @@ const express=require('express');
 const router=express.Router();
 const multer=require('multer');
 const auth = require('../../middleware/auth');
-const cleancache = require('../../middleware/cleanCache');
+// const cleancache = require('../../middleware/cleanCache');
 
 const userSignup=require('./userSignup');
 const userLogin=require('./userLogin');
@@ -40,7 +40,7 @@ const upload=multer({
 router.post('/userSignup',userSignup.userSignup);
 router.post('/otpVerify', auth,otpVerify.otpVerify) //it will verify otp when user enters otp and click on verify otp button
 router.post('/userLogin',userLogin.userLogin);
-router.post('/registerComplaints', auth ,cleancache,upload.single('Image'),registerComplaints.registerComplaints);
+router.post('/registerComplaints', auth ,/*cleancache,*/upload.single('Image'),registerComplaints.registerComplaints);
 router.post('/forgetPasswordMail',forgetPasswordMail.forgetPasswordMail)  // it will send an URL to entered email for changing password
 router.post('/forgetPasswordUrl',forgetPasswordUrl.forgetPasswordUrl)  // it will lead to user to another component for changing password
 router.post('/dispComplaints', auth, dispComplaints.dispComplaints);
