@@ -17,6 +17,6 @@ export class LoginService {
   }
 
   errorHandler(error: HttpErrorResponse){
-    return throwError(error.message || "Error")
+    return throwError(error || "Error")
   }
 }

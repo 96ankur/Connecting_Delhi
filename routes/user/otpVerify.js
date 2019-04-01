@@ -2,12 +2,11 @@ const {user} = require('../../models/userSchema');
 const Joi = require('joi');
 
 exports.otpVerify = async (req, res)=>{
-    console.log(req.body)
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     const otpDetail = await user.findById(req.decodedData._id,{otpDetails:true,_id:false});
-    if(!otpDetail) return res.status(204).send('Data Not found. Please request for OTP again');
+    if(!otpDetail) return res.status(204).send();
 
     if(req.body.otp == otpDetail.otpDetails.otp){
         if((Date.now()-otpDetail.otpDetails.time)<240000){
@@ -22,6 +21,5 @@ function validate(data){
     const schema = {
         otp: Joi.required()
     }
-
     return Joi.validate(data, schema);
 }

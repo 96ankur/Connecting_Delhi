@@ -17,7 +17,6 @@ import {HttpClientModule} from '@angular/common/http'
 
 // root services
 import {SignupService} from './Services/signup.service' 
-import {OtpService} from './Services/otp.service';
 import { RouterModule } from '@angular/router';
 import {LoginService} from './Services/login.service';
 import {ForgotPasswordService} from './Services/forgot-password.service';
@@ -43,7 +42,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [SignupService,OtpService,LoginService,ForgotPasswordService,ChangePasswordService],
+  providers: [SignupService,LoginService,ForgotPasswordService,ChangePasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
