@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import {SignupService} from '../Services/signup.service';
-import {OtpService} from '../Services/otp.service';
 import { Router } from '@angular/router';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   hide=true;
   userSignupForm: FormGroup;
   userSignupOTPForm:FormGroup;
-  constructor(private fb: FormBuilder, private route:Router,private SignupService:SignupService, private OtpService:OtpService) { }
+  constructor(private fb: FormBuilder, private route:Router,private SignupService:SignupService) { }
 
   ngOnInit() {
     this.createForms();
@@ -45,17 +45,30 @@ export class SignupComponent implements OnInit {
       }else{
         window.alert(res.body)
       }
+    },errorObj =>{
+      window.alert(errorObj.error);
     })
   }
   onSubmitUserSignupOTPForm(value){
-    this.OtpService.otpVerify(value).subscribe((res:any)=>{
+    this.SignupService.otpVerify(value).subscribe((res:any)=>{
       if(res.status == 200){
         window.alert(res.body);
-        sessionStorage.setItem('x-auth-token',res.headers.get('x-auth-token'))
         this.route.navigate(['user'])
       }else{
-        window.alert(res.body)
+        window.alert('Data Not found. Please request for OTP again')
       }
+    },errorObj =>{
+      window.alert(errorObj.error);
+    })
+  }
+
+  resendOtp(){
+    this.SignupService.resendOTP().subscribe((res:any)=>{
+      if(res.status == 200){
+        window.alert(res.body);
+      }
+    },errorObj =>{
+      window.alert(errorObj.error);
     })
   }
 }

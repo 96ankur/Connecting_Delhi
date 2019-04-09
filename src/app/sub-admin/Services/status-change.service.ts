@@ -10,12 +10,12 @@ export class StatusChangeService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
 
   updateStatus(id){
-    return this._http.post('http://localhost:5000/user/statusUpdate',
+    return this._http.post('http://localhost:5000/mc/statusUpdate',
     {id:id},
-    {headers:this.header})
+    {headers:this.header,responseType: 'text',observe: 'response'})
   }
 }

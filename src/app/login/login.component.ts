@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('x-auth-token',res.body)
         this.route.navigate(['user'])
       }
-   },error =>{
-     window.alert(error/*'Invalid email or password.'*/);
+   },errorObj =>{
+     window.alert(errorObj.error);
    })
   }
 }

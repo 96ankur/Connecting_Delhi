@@ -63,12 +63,14 @@ export class LoginComponent implements OnInit {
                     
     } 
     this.SubAdminLoginService.login(value).subscribe((res:any)=>{
-      if(res.success){
-        sessionStorage.setItem('tkn',res.token)
+      if(res.status == 200){
+        sessionStorage.setItem('x-auth-token',res.body)
         this.route.navigate(['subAdmin/'+this.selCorp])
       }else{
-        window.alert(res.msg)
+        window.alert(res.body)
       }
+    },error =>{
+      window.alert('Invalid email or password.');
     })
   }
 }

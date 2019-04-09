@@ -7,10 +7,10 @@ exports.mcLogin = async(req, res)=>{
 
   let mcDetails = await mc.findOne({corporationId:req.body.corporationId},{corporationPassword: true});
 
-  if (!mcDetails)  return res.status(404).send('Invalid mc details...');
+  if (!mcDetails)  return res.status(404).send('Invalid details...');
   
   if(!(req.body.corporationPassword === mcDetails.corporationPassword))
-    return res.status(404).send('Invalid mc details...');
+    return res.status(404).send('Invalid details...');
     
   const token = mcDetails.generateAuthToken();
   res.send(token);

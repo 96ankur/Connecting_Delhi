@@ -20,7 +20,6 @@ var mCorporation = new Schema({
         type:Number,
         default:0
     },
-
     corporationPassword:{
         type:String,
         required:true,

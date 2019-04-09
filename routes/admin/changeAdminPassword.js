@@ -8,10 +8,10 @@ exports.changeAdminPassword = async(req,res)=>{
 
     let adminDetails = await admin.findById(req.decodedData._id,{_id: false, adminPassword: true});
     
-    if (!adminDetails)  return res.status(404).send('Invalid admin details...');
+    if (!adminDetails)  return res.status(401).send();
 
     if(!(req.body.oldPassword === adminDetails.adminPassword))
-        return res.status(404).send('Invalid old Password');
+        return res.status(401).send();
 
     await admin.findByIdAndUpdate(req.decodedData._id,{adminPassword: req.body.newPassword});
         res.send('Password is changed successfully');

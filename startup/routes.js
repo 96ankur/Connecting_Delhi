@@ -1,6 +1,6 @@
 const express = require('express');
 const compression = require('compression');
-// const bodyParser=require('body-parser');
+// const bodyParser = require('body-parser');
 const user = require('../routes/user/userRoutes');
 const admin = require('../routes/admin/adminRoutes');
 const mc = require('../routes/mc/mcRoutes');

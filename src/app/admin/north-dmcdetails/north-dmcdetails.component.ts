@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplaintsCountService } from '../Services/complaints-count.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { GraphService } from '../Services/graph.service';
 
 @Component({
   selector: 'app-north-dmcdetails',
@@ -9,11 +11,13 @@ import { ComplaintsCountService } from '../Services/complaints-count.service';
 export class NorthDMCdetailsComponent implements OnInit {
 
     public complaintsCount={};
+    public token;
+    public corporation;
   
   //total complaints graphs logic
   public chartTypeTotal:string = 'bar';
   public chartDatasetsTotal:Array<any> = [
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Total Complaints'}
+        {data: [], label: 'Total Complaints'}
     ];
   public chartLabelsTotal:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
   public chartColorsTotal:Array<any> = [
@@ -34,7 +38,7 @@ export class NorthDMCdetailsComponent implements OnInit {
   //solved complaints graph
   public chartTypeSolved:string = 'bar';
   public chartDatasetsSolved:Array<any> = [
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Solved Complaints'}
+        {data: [], label: 'Solved Complaints'}
     ];
   public chartLabelsSolved:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
   public chartColorsSolved:Array<any> = [
@@ -55,7 +59,7 @@ export class NorthDMCdetailsComponent implements OnInit {
   //Pending complaints graphs logic  
   public chartTypePending:string='bar';
   public chartDatasetsPending:Array<any> = [
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Pending Complaints'}
+    {data: [], label: 'Pending Complaints'}
 ];
 public chartLabelsPending:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
 public chartColorsPending:Array<any> = [
@@ -74,9 +78,9 @@ public chartOptionsPending:any = {
 };
   //Pending complaints graphs logic  
   public chartTypeCategory:string='pie';
-  public chartDataCategory:Array<any> = [300, 50, 100, 40, 120];
+  public chartDataCategory:Array<any> = [];
 
-    public chartLabelsCategory:Array<any> = ['Sewage', 'Water', 'Roads', 'Electricity', 'Others'];
+    public chartLabelsCategory:Array<any> = ['Sewage', 'Water', 'Roads', 'Electricity'];
 
     public chartColorsCategory:Array<any> = [{
         hoverBorderColor: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)'],
@@ -93,17 +97,55 @@ public chartOptionsPending:any = {
   public chartHovered(e: any): void { }
 
 
-  constructor(private complaintsCountService:ComplaintsCountService) { }
+  constructor(private complaintsCountService:ComplaintsCountService, private route:Router,
+              private router: ActivatedRoute, private graphService:GraphService) { 
+    this.token=sessionStorage.getItem('x-auth-token')
+     if(this.token==""||!this.token||this.token==undefined||this.token==null){
+       window.alert('YOU HAVE LOGGED OUT!! PLEASE LOGIN AGAIN');
+       (this.route.navigate(['home']))
+       }
+  }
 
   ngOnInit() {
     this.complaintsCountService.count('NDMC').subscribe((res:any)=>{
-        if(res.success){
-            this.complaintsCount=res.count
+        if(res.status == 200){
+            this.complaintsCount=JSON.parse(res.body)
         }else{
-            window.alert(res.msg)
-
+            window.alert(res.body)
         }
     })
-}
 
+    switch(this.router.routeConfig.component.name){
+        case 'NorthDMCdetailsComponent':
+          this.corporation = 'NDMC';
+          break;
+        
+        case 'DCBdetailsComponent':
+          this.corporation = 'DCB';
+        break;
+
+        case 'SDMCdetailsComponent':
+          this.corporation = 'SDMC';
+        break;
+
+        case 'NewDMCdetailsComponent':
+          this.corporation = 'NewDMC';
+        break;
+        
+        case 'EDMCdetailsComponent':
+          this.corporation = 'EDMC';
+        break;
+    }
+    this.graphService.graph(this.corporation).subscribe((res:any)=>{
+      if(res.status == 200){
+          let data=JSON.parse(res.body);
+          this.chartDatasetsTotal = [{data: data.TC, label: 'Total Complaints'}];
+          this.chartDatasetsSolved = [{data: data.SC, label: 'Solved Complaints'}];
+          this.chartDatasetsPending = [{data: data.PC, label: 'Pending Complaints'}];
+          this.chartDataCategory = data.PI
+        }else{
+          window.alert(res.body)
+      }
+    })
+  }
 }

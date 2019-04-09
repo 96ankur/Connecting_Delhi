@@ -7,7 +7,7 @@ exports.statusUpdate = async (req,res)=>{
     if(error) return res.status(404).send(error.details[0].message);
 
     const data = await complaint.findByIdAndUpdate(req.body.id,{$set:{status:3}})
-    if(!data) return res.status(404).send('Complaint not found');
+    if(!data) return res.status(204).send();
 
     res.send('Status Updated');
 }

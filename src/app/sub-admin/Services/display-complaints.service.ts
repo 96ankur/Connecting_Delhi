@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 
 @Injectable()
 export class DisplayComplaintsService {
@@ -8,14 +11,19 @@ export class DisplayComplaintsService {
 
   header=new HttpHeaders({
     "Content-Type":"application/json",
-    "client-token":sessionStorage.getItem("tkn")
+    "x-auth-token":sessionStorage.getItem("x-auth-token")
   })
   
   complaints(category){
-    return this._http.post('http://localhost:5000/user/dispCompByCategory',{
-      category:category
-    },{
-      headers:this.header
-    })
+    return this._http.post('http://localhost:5000/mc/dispCompByCategory',{
+                          category:category},{
+                          headers:this.header,
+                          responseType: 'text',
+                          observe: 'response'
+                        })
+                        .pipe(catchError(this.errorHandler))
+  }
+  errorHandler(error: HttpErrorResponse){
+    return throwError(error.message || "Error")
   }
 }

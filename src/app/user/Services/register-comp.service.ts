@@ -21,7 +21,7 @@ export class RegisterCompService {
               }
     const fd=new FormData();
     fd.append('data',JSON.stringify(data))
-    fd.append('Image',value.selectedFile,value.selectedFile.name);
+    fd.append('image',value.selectedFile,value.selectedFile.name);
     return this._http.post('http://localhost:5000/user/registerComplaints',fd,{
                             headers:this.header,
                             responseType: 'text',
