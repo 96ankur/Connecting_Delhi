@@ -12,7 +12,7 @@ var complaints=new Schema({
         name:String,
         id:mongoose.Schema.Types.ObjectId
     },
-    Image:{
+    image:{
         type:String,
         required:true
     },
