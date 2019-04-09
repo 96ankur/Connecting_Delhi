@@ -16,7 +16,7 @@ export class AdminChangePasswordService {
   })
 
   changePassword(value){
-    return this._http.post('http://localhost:5000/user/changeAdminPassword',{
+    return this._http.post('http://localhost:5000/admin/changeAdminPassword',{
       oldPassword:value.oldPassword,
       newPassword:value.newPassword,
     },{headers:this.header,responseType: 'text',observe: 'response'})
@@ -24,6 +24,6 @@ export class AdminChangePasswordService {
   }
 
   errorHandler(error: HttpErrorResponse){
-    return throwError(error.message || "Error")
+    return throwError(error|| "Error")
   }
 }

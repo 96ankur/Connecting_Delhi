@@ -36,12 +36,12 @@ export class AdminChangePasswordComponent implements OnInit {
     this.ChangePasswordService.changePassword(value).subscribe((res:any)=>{
       if(res.status == 200){
         window.alert(res.body);
-        this.route.navigate(['user']);
+        this.route.navigate(['admin/dashboard']);
       }else{
         window.alert(res.msg);
       }
-    },error =>{
-      window.alert('Invalid details');
+    },errObj =>{
+      window.alert(errObj.error);
     })
    }
   
