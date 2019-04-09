@@ -13,8 +13,8 @@ exports.otpVerify = async (req, res)=>{
             await user.findOneAndUpdate({_id: req.decodedData._id}, {$set:{mobileVerification:true}});
             res.send('Your account has been created successfully');
         }
-        else return res.send('OTP expired. Request for OTP once again');
-    }else return res.send('Invalid OTP');
+        else return res.status(401).send('OTP expired. Request for OTP once again');
+    }else return res.status(401).send('Invalid OTP');
 } 
 
 function validate(data){

@@ -17,11 +17,8 @@ export class SignupService {
   });
 
   otpVerify(value) {
-    return this._http.post(
-      "http://localhost:5000/user/otpVerify",
-      {
-        otp: value.otp
-      },
+    return this._http.post("http://localhost:5000/user/otpVerify",
+      {otp: value.otp},
       {
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +27,7 @@ export class SignupService {
         responseType: "text",
         observe: "response"
       }
-    );
+    ) .pipe(catchError(this.errorHandler));;
   }
 
   signup(value) {
@@ -47,6 +44,17 @@ export class SignupService {
         { responseType: "text", observe: "response" }
       )
       .pipe(catchError(this.errorHandler));
+  }
+
+  resendOTP(){
+    return this._http.get('http://localhost:5000/user/resendOtp',{
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": sessionStorage.getItem("x-auth-token")
+      },
+      responseType: "text",
+      observe: "response"
+    }).pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error: HttpErrorResponse) {

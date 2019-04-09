@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import {SignupService} from '../Services/signup.service';
 import { Router } from '@angular/router';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 @Component({
@@ -56,6 +57,18 @@ export class SignupComponent implements OnInit {
       }else{
         window.alert('Data Not found. Please request for OTP again')
       }
+    },errorObj =>{
+      window.alert(errorObj.error);
+    })
+  }
+
+  resendOtp(){
+    this.SignupService.resendOTP().subscribe((res:any)=>{
+      if(res.status == 200){
+        window.alert(res.body);
+      }
+    },errorObj =>{
+      window.alert(errorObj.error);
     })
   }
 }

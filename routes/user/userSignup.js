@@ -10,7 +10,7 @@ exports.userSignup = async (req, res)=>{
     if (error) return res.status(400).send(error.details[0].message);
      
     let userDetails= await    user.findOne({ userEmail: req.body.userEmail })    
-    if (userDetails) return res.status(400).send('User already registered...');
+    if (userDetails) return res.status(400).send('Email ID already registered...');
     
     if(!validator.isValidNumber(req.body.userAadhar)) return res.status(400).send('Aadhar number is invalid')
 
