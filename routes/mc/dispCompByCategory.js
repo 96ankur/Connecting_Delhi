@@ -13,7 +13,7 @@ exports.dispCompByCategory= async (req,res)=>{
     if(!corpId) return res.status(404).send();
 
     const complaints = await complaint.find({"m_corporation.corp_id":corpId.corporationId,category:req.body.category},{})
-                                      .cache({key:req.decodedData._id})
+                                    //   .cache({key:req.decodedData._id})
     if(complaints.length == 0) return res.status(204).send();
     
     complaints.forEach(element=>{

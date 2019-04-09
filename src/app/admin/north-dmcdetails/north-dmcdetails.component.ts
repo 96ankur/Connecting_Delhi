@@ -13,15 +13,11 @@ export class NorthDMCdetailsComponent implements OnInit {
     public complaintsCount={};
     public token;
     public corporation;
-    public TC=[10];
-    public SC=[];
-    public PC=[];
-    public PI=[];
   
   //total complaints graphs logic
   public chartTypeTotal:string = 'bar';
   public chartDatasetsTotal:Array<any> = [
-        {data: this.TC, label: 'Total Complaints'}
+        {data: [], label: 'Total Complaints'}
     ];
   public chartLabelsTotal:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
   public chartColorsTotal:Array<any> = [
@@ -42,7 +38,7 @@ export class NorthDMCdetailsComponent implements OnInit {
   //solved complaints graph
   public chartTypeSolved:string = 'bar';
   public chartDatasetsSolved:Array<any> = [
-        {data: this.SC, label: 'Solved Complaints'}
+        {data: [], label: 'Solved Complaints'}
     ];
   public chartLabelsSolved:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
   public chartColorsSolved:Array<any> = [
@@ -63,7 +59,7 @@ export class NorthDMCdetailsComponent implements OnInit {
   //Pending complaints graphs logic  
   public chartTypePending:string='bar';
   public chartDatasetsPending:Array<any> = [
-    {data: this.PC, label: 'Pending Complaints'}
+    {data: [], label: 'Pending Complaints'}
 ];
 public chartLabelsPending:Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'];
 public chartColorsPending:Array<any> = [
@@ -82,7 +78,7 @@ public chartOptionsPending:any = {
 };
   //Pending complaints graphs logic  
   public chartTypeCategory:string='pie';
-  public chartDataCategory:Array<any> = this.PI;
+  public chartDataCategory:Array<any> = [];
 
     public chartLabelsCategory:Array<any> = ['Sewage', 'Water', 'Roads', 'Electricity'];
 
@@ -143,10 +139,10 @@ public chartOptionsPending:any = {
     this.graphService.graph(this.corporation).subscribe((res:any)=>{
       if(res.status == 200){
           let data=JSON.parse(res.body);
-          this.TC = data.TC;
-          this.PC = data.PC;
-          this.SC = data.SC;
-          this.PI = data.PI;
+          this.chartDatasetsTotal = [{data: data.TC, label: 'Total Complaints'}];
+          this.chartDatasetsSolved = [{data: data.SC, label: 'Solved Complaints'}];
+          this.chartDatasetsPending = [{data: data.PC, label: 'Pending Complaints'}];
+          this.chartDataCategory = data.PI
         }else{
           window.alert(res.body)
       }
