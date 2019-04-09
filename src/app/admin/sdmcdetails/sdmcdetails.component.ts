@@ -148,4 +148,9 @@ ngOnInit() {
     }
   })
 }
+
+logout() {
+  sessionStorage.removeItem("x-auth-token");
+  this.route.navigate(["home"]);
+}
 }
