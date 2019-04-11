@@ -21,14 +21,14 @@ export class PostService {
                       .pipe(catchError(this.errorHandler));
   }
 
-  sort(data){
-    return this._http.post('/user/sorting',data,{
-                        headers:this.header,
-                        responseType: 'text',
-                        observe: 'response'})
-                      .pipe(catchError(this.errorHandler))
+  // sort(data){
+  //   return this._http.post('/user/sorting',data,{
+  //                       headers:this.header,
+  //                       responseType: 'text',
+  //                       observe: 'response'})
+  //                     .pipe(catchError(this.errorHandler))
 
-  }
+  // }
 
   errorHandler(error: HttpErrorResponse){
     return throwError(error || "Error")
