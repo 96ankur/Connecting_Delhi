@@ -372,37 +372,32 @@ footer{
     height: 1rem; 
   }
   .heading-primary--main 
-   {
+   {  margin-top: 30px;
       font-size: 2rem;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: .5rem;
     
     }
     .heading-primary--sub {
       display: block;
-      font-size: 0.5rem;
-      font-weight: 200;
+      font-size: 1.2rem;
+      font-weight: 300;
       }
       
   
 .heading-secondary {
-  font-size: 2.5rem;
-  font-weight: 300;
-  letter-spacing: .5rem;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: .1rem;
   
  }
-      
+ .btn 
+ {
+  
+   padding: .3rem 2rem;
+   font-size: 1; 
+ }   
 
- .btn-text:link, .btn-text:visited {
-  font-size: 1rem;
-  padding: .2rem; }
-
-  .header__logo-box 
-  {
-    position: absolute;
-    top: 2rem;
-    left: 2rem; 
-  }
 }
 
   
