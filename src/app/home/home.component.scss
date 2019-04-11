@@ -365,4 +365,25 @@ footer{
     }
   
   
+/*media query for small phones 0 to 480px*/
+@media only screen and (max-width:550px){
+  .header__logo 
+  {
+    height: 1rem; 
+  }
+  .heading-primary--main 
+   {
+      font-size: 2rem;
+      font-weight: 200;
+      letter-spacing: .5rem;
+    
+    }
+    .heading-primary--sub {
+      display: block;
+      font-size: 0.5rem;
+      font-weight: 100;
+      }
+
+}
+
   
