@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 })
 export class PostsComponent implements OnInit {
   public complaints;
+  public count;
+  public userName;
   public token;
 
   constructor(private PostService: PostService, private route: Router) {
@@ -27,11 +29,27 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.PostService.post().subscribe((res: any) => {
       if (res.status == 200) {
+        this.complaints = JSON.parse(res.body.filteredComplaints);
+        this.count = JSON.parse(res.body.count);
+        this.userName = JSON.parse(res.body.userName);
+      } else {
+        window.alert("Complaint not registered");
+      }
+    },errorObj =>{
+       window.alert(errorObj.error);
+     });
+  }
+
+  sorting(data){
+    this.PostService.sort(data).subscribe((res:any)=>{
+      if (res.status == 200) {
         this.complaints = JSON.parse(res.body);
       } else {
-        window.alert("No complaint registered");
+        window.alert("Complaint not registered");
       }
-    });
+    },errorObj =>{
+       window.alert(errorObj.error);
+     })
   }
 
   logout() {

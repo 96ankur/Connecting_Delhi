@@ -2,90 +2,13 @@
 {"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
 {"message":" Listening on port 5000 ...","level":"info"}
 {"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
+{"level":"error","message":"Invalid status code: [object Object],[object Object],[object Object]Invalid status code: [object Object],[object Object],[object Object]","stack":"RangeError: Invalid status code: [object Object],[object Object],[object Object]\n    at ServerResponse.writeHead (_http_server.js:200:11)\n    at ServerResponse.writeHead (/home/ankur/Desktop/Connecting_Delhi/node_modules/on-headers/index.js:44:26)\n    at ServerResponse._implicitHeader (_http_server.js:191:8)\n    at ServerResponse.end (/home/ankur/Desktop/Connecting_Delhi/node_modules/compression/index.js:103:14)\n    at ServerResponse.send (/home/ankur/Desktop/Connecting_Delhi/node_modules/express/lib/response.js:221:10)\n    at ServerResponse.json (/home/ankur/Desktop/Connecting_Delhi/node_modules/express/lib/response.js:267:15)\n    at ServerResponse.send (/home/ankur/Desktop/Connecting_Delhi/node_modules/express/lib/response.js:158:21)\n    at exports.dispComplaints (/home/ankur/Desktop/Connecting_Delhi/routes/user/dispComplaints.js:60:7)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:189:7)"}
 {"message":" Listening on port 5000 ...","level":"info"}
 {"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
 {"message":" Listening on port 5000 ...","level":"info"}
 {"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
 {"message":" Listening on port 5000 ...","level":"info"}
 {"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"level":"error","message":"Assignment to constant variable.Assignment to constant variable.","stack":"TypeError: Assignment to constant variable.\n    at exports.dispComplaints (/home/ankur/Desktop/Connecting_Delhi/routes/user/dispComplaints.js:18:8)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:189:7)"}
-{"message":" Listening on port 5000 ...","level":"info"}
-{"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
-{"level":"error","message":"Assignment to constant variable.Assignment to constant variable.","stack":"TypeError: Assignment to constant variable.\n    at exports.dispComplaints (/home/ankur/Desktop/Connecting_Delhi/routes/user/dispComplaints.js:18:8)\n    at <anonymous>\n    at process._tickCallback (internal/process/next_tick.js:189:7)"}
 {"message":" Listening on port 5000 ...","level":"info"}
 {"message":"Connected to mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi ...","level":"info"}
 {"message":" Listening on port 5000 ...","level":"info"}

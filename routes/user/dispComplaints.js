@@ -47,5 +47,16 @@ exports.dispComplaints = async (req, res) => {
     }
   });
 
-  res.send(filteredComplaints);
+  const totalComplaints = await complaint.countDocuments({"user.id":req.decodedData._id})
+  const pendingComplaints = await complaint.countDocuments({"user.id":req.decodedData._id,status:1})
+  const completedComplaints = await complaint.countDocuments({"user.id":req.decodedData._id,status:3})
+  
+  const count = {
+      totalComplaints:totalComplaints,
+      pendingComplaints:pendingComplaints,
+      completedComplaints:completedComplaints
+  }
+
+
+  res.send({filteredComplaints,count,userName:userName.userName});
 }

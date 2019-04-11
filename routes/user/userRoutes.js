@@ -13,6 +13,7 @@ const forgetPasswordUrl=require('./forgetPassUrl');
 const dispComplaints=require('././dispComplaints');
 const changeUserPassword=require('./changeUserPassword');
 const resendOtp = require('./resendOtp');
+const sorting = require('./sorting');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -47,9 +48,7 @@ router.post('/forgetPasswordUrl',forgetPasswordUrl.forgetPasswordUrl)  // it wil
 router.post('/dispComplaints', auth, dispComplaints.dispComplaints);
 router.post('/changeUserPassword', auth, changeUserPassword.changeUserPassword);
 router.get('/resendOtp',auth,resendOtp.resendOtp);
-
-
-
+router.post('/sorting',auth,sorting.sorting);
 
 
 module.exports = router;

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class PostService {
@@ -15,7 +17,20 @@ export class PostService {
     return this._http.post('/user/dispComplaints',{},{
                            headers:this.header,
                            responseType: 'text',
-                           observe: 'response'
-                          });
+                           observe: 'response'})
+                      .pipe(catchError(this.errorHandler));
+  }
+
+  sort(data){
+    return this._http.post('/user/sorting',data,{
+                        headers:this.header,
+                        responseType: 'text',
+                        observe: 'response'})
+                      .pipe(catchError(this.errorHandler))
+
+  }
+
+  errorHandler(error: HttpErrorResponse){
+    return throwError(error || "Error")
   }
 }
