@@ -36,12 +36,15 @@ export class LoginComponent implements OnInit {
   }
  
   onSubmitUserLoginForm(value){
+    this.loading = true;
    this.loginService.login(value).subscribe((res:any)=>{
       if(res.status == 200){
+        this.loading = false;
         sessionStorage.setItem('x-auth-token',res.body)
         this.route.navigate(['user'])
       }
    },errorObj =>{
+    this.loading = false;
      window.alert(errorObj.error);
    })
   }
