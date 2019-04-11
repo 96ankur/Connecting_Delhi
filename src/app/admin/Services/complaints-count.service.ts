@@ -14,7 +14,7 @@ export class ComplaintsCountService {
   })
 
   count(corporation){
-    return this._http.post('http://localhost:5000/admin/complaintsCount',{
+    return this._http.post('/admin/complaintsCount',{
       corp_id:corporation
     },{headers:this.header,responseType: 'text',observe: 'response'})
   }

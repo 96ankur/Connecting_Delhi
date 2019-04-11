@@ -9,7 +9,7 @@ export class LoginService {
   constructor(private _http:HttpClient) { }
 
   login(value){
-    return this._http.post('http://localhost:5000/user/userLogin',{
+    return this._http.post('/user/userLogin',{
                             userEmail:value.email,
                             userPassword:value.password,
                           },{responseType: 'text',observe: 'response'})

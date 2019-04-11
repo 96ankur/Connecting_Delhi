@@ -12,7 +12,7 @@ export class MyComplaintsService {
   })
   
   myComplaints(){
-    return this._http.post('http://localhost:5000/user/dispComplaints',{type:'personal'},{
+    return this._http.post('/user/dispComplaints',{type:'personal'},{
                             headers:this.header,
                             responseType: 'text',
                             observe: 'response'

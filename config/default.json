@@ -1,4 +1,4 @@
 {
     "jwtPrivateKey": "",
-    "db": "mongodb://localhost:27017/connecting_D"
+    "db":"mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi"
 }

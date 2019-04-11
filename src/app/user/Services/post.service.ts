@@ -12,7 +12,7 @@ export class PostService {
   })
 
   post(){
-    return this._http.post('http://localhost:5000/user/dispComplaints',{},{
+    return this._http.post('/user/dispComplaints',{},{
                            headers:this.header,
                            responseType: 'text',
                            observe: 'response'

@@ -14,7 +14,7 @@ export class StatusChangeService {
   })
 
   updateStatus(id){
-    return this._http.post('http://localhost:5000/mc/statusUpdate',
+    return this._http.post('/mc/statusUpdate',
     {id:id},
     {headers:this.header,responseType: 'text',observe: 'response'})
   }

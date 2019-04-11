@@ -7,7 +7,7 @@ export class ChangePasswordService {
   constructor(private _http:HttpClient) { }
 
   changePassword(value){
-    return this._http.post('http://localhost:5000/user/forgetPasswordUrl',{
+    return this._http.post('/user/forgetPasswordUrl',{
       email:value.email,
       newPassword:value.newPassword,
       confirmPassword:value.confirmPassword

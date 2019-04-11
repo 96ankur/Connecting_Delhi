@@ -22,7 +22,7 @@ export class RegisterCompService {
     const fd=new FormData();
     fd.append('data',JSON.stringify(data))
     fd.append('image',value.selectedFile,value.selectedFile.name);
-    return this._http.post('http://localhost:5000/user/registerComplaints',fd,{
+    return this._http.post('/user/registerComplaints',fd,{
                             headers:this.header,
                             responseType: 'text',
                             observe: 'response'

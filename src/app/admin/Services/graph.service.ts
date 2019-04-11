@@ -12,7 +12,7 @@ export class GraphService {
   })
 
   graph(corporation){
-    return this._http.post('http://localhost:5000/admin/complaintsGraph',{
+    return this._http.post('/admin/complaintsGraph',{
       corpId:corporation
     },{headers:this.header, responseType: 'text',observe: 'response'})
   }

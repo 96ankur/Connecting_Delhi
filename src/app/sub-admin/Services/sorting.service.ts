@@ -12,7 +12,7 @@ export class SortingService {
   })
 
   sort(value){
-    return this._http.post('http://localhost:5000/mc/sorting',
+    return this._http.post('/mc/sorting',
     {status:value.status,
      category:value.category},
     {headers:this.header,responseType: 'text',observe: 'response'})

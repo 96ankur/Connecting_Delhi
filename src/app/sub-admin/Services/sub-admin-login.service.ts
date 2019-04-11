@@ -10,7 +10,7 @@ export class SubAdminLoginService {
   constructor(private _http:HttpClient) { }
 
   login(value){
-    return this._http.post('http://localhost:5000/mc/mcLogin',{
+    return this._http.post('/mc/mcLogin',{
                             corporationId:value.Corporation,
                             corporationPassword:value.password
                           },{

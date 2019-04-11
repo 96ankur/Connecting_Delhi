@@ -12,6 +12,8 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 export class ChangePasswordComponent implements OnInit {
 
   public email;
+  public hide: Boolean = false;
+
   homeChangePasswordForm:FormGroup;
   constructor( private fb: FormBuilder,
                private ChangePasswordService:ChangePasswordService,private route:ActivatedRoute,

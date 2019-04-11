@@ -9,7 +9,7 @@ export class AdminLoginService {
   constructor(private _http:HttpClient) { }
 
   login(value){
-    return this._http.post('http://localhost:5000/admin/adminLogin',{
+    return this._http.post('/admin/adminLogin',{
                           adminId:value.email,
                           adminPassword:value.password
                         },{responseType: 'text',observe: 'response'})

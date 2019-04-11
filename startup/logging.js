@@ -11,8 +11,8 @@ module.exports = function() {
   });
   
   winston.add(new winston.transports.File({ filename: 'logfile.log' }));
-  winston.add(new winston.transports.MongoDB({ 
-    db: 'mongodb://localhost/Connecting_Delhi_logs',
+/*winston.add(new winston.transports.MongoDB({ 
+    db: 'mongodb://CD_admin:connectingD1104@ds135776.mlab.com:35776/connecting_delhi',
     level: 'info'
-  })); 
+  }));*/ 
 }

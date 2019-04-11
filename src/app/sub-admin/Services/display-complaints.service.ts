@@ -15,7 +15,7 @@ export class DisplayComplaintsService {
   })
   
   complaints(category){
-    return this._http.post('http://localhost:5000/mc/dispCompByCategory',{
+    return this._http.post('/mc/dispCompByCategory',{
                           category:category},{
                           headers:this.header,
                           responseType: 'text',

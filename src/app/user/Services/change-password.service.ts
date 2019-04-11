@@ -12,7 +12,7 @@ export class ChangePasswordService {
   })
 
   changePassword(value){
-    return this._http.post('http://localhost:5000/user/changeUserPassword',{
+    return this._http.post('/user/changeUserPassword',{
       oldPassword:value.oldPassword,
       newPassword:value.newPassword,
     },{

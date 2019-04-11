@@ -17,7 +17,7 @@ export class SignupService {
   });
 
   otpVerify(value) {
-    return this._http.post("http://localhost:5000/user/otpVerify",
+    return this._http.post("/user/otpVerify",
       {otp: value.otp},
       {
         headers: {
@@ -33,7 +33,7 @@ export class SignupService {
   signup(value) {
     return this._http
       .post(
-        "http://localhost:5000/user/userSignup",
+        "/user/userSignup",
         {
           userName: value.userName,
           userPhone: value.phone,
@@ -47,7 +47,7 @@ export class SignupService {
   }
 
   resendOTP(){
-    return this._http.get('http://localhost:5000/user/resendOtp',{
+    return this._http.get('/user/resendOtp',{
       headers: {
         "Content-Type": "application/json",
         "x-auth-token": sessionStorage.getItem("x-auth-token")

@@ -7,7 +7,7 @@ export class ForgotPasswordService {
   constructor(private _http:HttpClient) { }
 
   forgotPassword(value){
-    return this._http.post('http://localhost:5000/user/forgetPasswordMail',{
+    return this._http.post('/user/forgetPasswordMail',{
       email:value.email
     })
   }
