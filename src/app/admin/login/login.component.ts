@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  hide=true;
-  
+  hide: boolean=true;
+  loading: boolean = false;
   adminLoginForm:FormGroup;
 
   constructor(private fb: FormBuilder,
@@ -32,14 +32,18 @@ export class LoginComponent implements OnInit {
   } 
   
   onSubmitAdminLoginForm(value){
+    this.loading = true;
     this.AdminLoginService.login(value).subscribe((res:any)=>{
       if(res.status == 200){
+        this.loading = false;
         sessionStorage.setItem('x-auth-token',res.body)
         this.route.navigate(['admin/dashboard'])
       }else{
+        this.loading = false;
         window.alert(res.msg)
       }
     },error =>{
+      this.loading = false;
       window.alert('Invalid email or password.');
     })
    }

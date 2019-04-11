@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 
 export class RegisterComplaintsComponent implements OnInit {
-  
+  loading: boolean = false;
   userComplaintsForm: FormGroup;
   selectedFile:File=null;
   public token
@@ -59,6 +59,9 @@ export class RegisterComplaintsComponent implements OnInit {
     this.createForms();
   }
 
+
+
+  
   createForms() {
     this.userComplaintsForm = this.fb.group({
       description:['', Validators.compose([Validators.required,])],
@@ -72,12 +75,15 @@ export class RegisterComplaintsComponent implements OnInit {
   }
 
   onSubmitUserComplaintsForm(value){
+    this.loading = true;
     value.selectedFile=this.selectedFile;
     this.RegisterCompService.registerComplaints(value).subscribe((res:any)=>{
       if(res.status == 200){
+        this.loading = false;
         window.alert(res.body);
         this.route.navigate(['user']);
       }else{
+        this.loading = false;
         window.alert(res.msg);
       }
     })  

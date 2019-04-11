@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-change-password.component.scss']
 })
 export class AdminChangePasswordComponent implements OnInit {
+  loading: boolean = false;
   ChangePasswordForm:FormGroup;
   public token;
 
@@ -33,14 +34,18 @@ export class AdminChangePasswordComponent implements OnInit {
   }
     
   onSubmitChangePasswordForm(value){
+    this.loading = true;
     this.ChangePasswordService.changePassword(value).subscribe((res:any)=>{
       if(res.status == 200){
+        this.loading = false;
         window.alert(res.body);
         this.route.navigate(['admin/dashboard']);
       }else{
+        this.loading = false;
         window.alert(res.msg);
       }
     },errObj =>{
+      this.loading = false;
       window.alert(errObj.error);
     })
    }

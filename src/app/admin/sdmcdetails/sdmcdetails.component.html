@@ -51,9 +51,70 @@
             </div>
         </div>
         <br>
-        <h2>Total Complaint :{{complaintsCount.totalComplaints}}</h2>
-        <h2>Pending Complaint :{{complaintsCount.pendingComplaints}}</h2>
-        <h2>Solved Complaint :{{complaintsCount.completedComplaints}}</h2>
+        
+ <div class="container">
+        <div class="row">
+               <div class="col-md-4 wid pt-4" >
+                       <div class="card" style="box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.15);" >
+                           <div class="card__picture card__picture--1">
+                               &nbsp;
+                           </div>
+                           <h4 class="card__heading ">
+                                   <span class="card__heading-span card__heading-span--1">Total Complaints</span>
+                           </h4>
+                              
+                           <div class="card-body">
+                               <div class="card__details text-center">
+                                   <button style="margin-top:5px;width:150px;" class="btn btn--white1">
+                                           {{complaintsCount.totalComplaints}}
+                                   </button><br>
+                                   
+                                </div>      
+                           </div>
+                         </div>  
+                   </div>
+                   <div class="col-md-4 wid pt-4" >
+                           <div class="card" style="box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.15);" >
+                               <div class="card__picture card__picture--2">
+                                   &nbsp;
+                               </div>
+                               <h4 class="card__heading ">
+                                       <span class="card__heading-span card__heading-span--2">Solved Complaints</span>
+                               </h4>
+                                  
+                               <div class="card-body">
+                                   <div class="card__details text-center">
+                                       <button style="margin-top:5px;width:150px;" class="btn btn--white2">
+                                               {{complaintsCount.completedComplaints}}
+                                       </button><br>
+                                       
+                                    </div>      
+                               </div>
+                             </div>  
+                       </div>
+                       <div class="col-md-4 wid pt-4" >
+                               <div class="card" style="box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.15);" >
+                                   <div class="card__picture card__picture--3">
+                                       &nbsp;
+                                   </div>
+                                   <h4 class="card__heading ">
+                                           <span class="card__heading-span card__heading-span--3">Pending Complaints</span>
+                                   </h4>
+                                      
+                                   <div class="card-body">
+                                       <div class="card__details text-center">
+                                           <button style="margin-top:5px;width:150px;" class="btn btn--white3">
+                                                   {{complaintsCount.pendingComplaints}}
+                                           </button><br>
+                                           
+                                        </div>      
+                                   </div>
+                                 </div>  
+                           </div>
+   
+        </div>
+    </div>
+   
         <div class="container">
     <div class="row">
       <div class="col-md-6  pt-4">
@@ -134,8 +195,9 @@
   </div>
   
   
-  <br><br>
-  <div class="row pt-4">
+  
+<br><br><br><br><br><br>
+<div class="row pt-4">
         <div class="col-md-1"></div>
         <div class="col-md-10">
                 <footer class="page-footer font-small teal pt-4 ">
@@ -146,8 +208,8 @@
                         <!-- Footer Text -->
                       
                         <!-- Copyright -->
-                        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-                          <a href="https://ConnectingIndia.ml"> ConnectingDelhi.ml</a>
+                        <div class="footer-copyright text-center py-3">© 2018 Copyright: Design & Developed by Akash & Ankur
+                          <a href="https://ConnectingDelhi.ml">ConnectingDelhi.ml </a>
                         </div>
                         <!-- Copyright -->
                       
@@ -160,5 +222,3 @@
     </div>      
           
           
-
-  

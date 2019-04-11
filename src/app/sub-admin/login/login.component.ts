@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  loading: boolean = false;
  public selCorp="";
- hide=true;
+ hide: boolean=true;
   userLoginForm:FormGroup;
   agencies:Corp[]= [
     {value:'NDMC', viewValue: 'North Delhi Mun. Corp.'},
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
   }
  
   onSubmitUserLoginForm(value){
+    this.loading = true;
     switch(value.Corporation){
       case "NDMC" : 
                     this.selCorp="northDelhiMunicipalCorporation";
@@ -64,12 +66,15 @@ export class LoginComponent implements OnInit {
     } 
     this.SubAdminLoginService.login(value).subscribe((res:any)=>{
       if(res.status == 200){
+        this.loading = false;
         sessionStorage.setItem('x-auth-token',res.body)
         this.route.navigate(['subAdmin/'+this.selCorp])
       }else{
+        this.loading = false;
         window.alert(res.body)
       }
     },error =>{
+      this.loading = false;
       window.alert('Invalid email or password.');
     })
   }

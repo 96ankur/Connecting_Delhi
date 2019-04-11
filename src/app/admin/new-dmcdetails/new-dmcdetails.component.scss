@@ -32,6 +32,102 @@ transform: translateY(-1.5rem) scale(1.03); }
     letter-spacing: .1rem;
     transition: all .2s; 
    }   
+
+
+   .org{
+    font-size:30px;
+    font-weight: bolder;
+}
+
+
+    
+.card{
+    transition: transform .3s;
+}
+.card:hover {
+transition: transform .3s;
+transform: translateY(-1.5rem) scale(1.03); }
+
+.card__picture {
+background-size: cover;
+height: 8rem;
+background-blend-mode: screen;
+clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+-webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+border-top-left-radius: 3px;
+border-top-right-radius: 3px; }
+
+.card__picture--1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../../assets/images/nat-7.jpg); }
+.card__picture--2 {
+    background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../../../assets/images/nat-7.jpg); }
+.card__picture--3 {
+    background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../../../assets/images/nat-7.jpg); }
+
+  .card__heading {
+font-size: 1.1rem;
+font-weight: 300;
+text-transform: uppercase;
+text-align: right;
+color: #fff;
+position: absolute;
+top: 6rem;
+right: 2rem;
+width: 65%; }
+
+.card__heading-span {
+padding: 1rem 0.8rem;
+-webkit-box-decoration-break: clone;
+box-decoration-break: clone; }
+
+.card__heading-span--1 {
+  background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+
+.card__heading-span--2 {
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+
+.card__heading-span--3 {
+  background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+
+  .card__details ul li {
+    font-size: 1rem;
+    list-style: none;
+     }
+   
+
+      .btn:link, .btn:visited 
+      {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: .2rem 2rem;
+        /*T B L R OR T/B L/R*/
+        /*right now its inline element so it occupies over other element*/
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        /*transition property always specifed on initial state*/
+        position: relative;
+        font-size: 1.2rem; 
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+        color:#fff;  
+    }
+            
+        .btn--white1 {
+          background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); 
+          color: #fff; }
+     
+        .btn--white2 {
+            background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85));
+            color: #fff; }
+     
+         .btn--white3 {
+              background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85));
+              color: #fff; }
+     
+                 
+
+            
+    
 footer 
 {  
  /* that every point the height of the box of this element should be 95% of the view port height */
