@@ -91,7 +91,7 @@
                               </mat-select>
                              </mat-form-field>
                                 
-                        <button  mdbBtn type="submit"  class="waves-light text-center"  color="primary"  mdbWavesEffect >
+                        <button  *ngIf="!locationAccess" mdbBtn type="submit"  class="waves-light text-center"  color="primary"  mdbWavesEffect >
                                 <i *ngIf="!loading" class="fas fa-sign-in-alt"></i>
                             <i *ngIf="loading" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                           Share Your Problems With Us :-)

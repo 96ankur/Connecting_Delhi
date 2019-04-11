@@ -15,6 +15,7 @@ export class RegisterComplaintsComponent implements OnInit {
   loading: boolean = false;
   userComplaintsForm: FormGroup;
   selectedFile:File=null;
+  locationAccess: boolean = false;
   public token
   
   problems:Location[]= [
@@ -57,6 +58,7 @@ export class RegisterComplaintsComponent implements OnInit {
 
   ngOnInit() {
     this.createForms();
+    this.getLocation();
   }
 
 
@@ -73,7 +75,19 @@ export class RegisterComplaintsComponent implements OnInit {
     })
 
   }
-
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let location = {
+          "lng": position.coords.longitude,
+          "lat": position.coords.latitude
+        }
+        this.locationAccess = true;
+   
+      });
+    }
+    
+  }
   onSubmitUserComplaintsForm(value){
     this.loading = true;
     value.selectedFile=this.selectedFile;
