@@ -9,8 +9,12 @@ import { Router } from "@angular/router";
 })
 export class PostsComponent implements OnInit {
   public complaints;
-  public count;
-  public userName;
+  public count= {
+    totalComplaints:0,
+    completedComplaints: 0,
+    pendingComplaints: 0
+  };
+  public userName = "";
   public token;
 
   constructor(private PostService: PostService, private route: Router) {
