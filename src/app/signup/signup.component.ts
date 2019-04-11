@@ -12,8 +12,11 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  flag=false;
-  hide=true;
+  flag: boolean=false;
+  hide: boolean=true;
+  
+  loading: boolean = false;
+
   userSignupForm: FormGroup;
   userSignupOTPForm:FormGroup;
   constructor(private fb: FormBuilder, private route:Router,private SignupService:SignupService) { }
@@ -37,24 +40,32 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmitUserSignupForm(value){
+    this.loading = true;
     this.SignupService.signup(value).subscribe((res:any)=>{
       if(res.status == 200){
+        this.loading = false;
         window.alert(res.body);
         sessionStorage.setItem('x-auth-token',res.headers.get('x-auth-token'))
         this.flag=true;
       }else{
+        this.loading = false;
         window.alert(res.body)
       }
     },errorObj =>{
+      this.loading = false;
       window.alert(errorObj.error);
     })
   }
   onSubmitUserSignupOTPForm(value){
+    this.loading = false;
     this.SignupService.otpVerify(value).subscribe((res:any)=>{
+      
       if(res.status == 200){
+        this.loading = false;
         window.alert(res.body);
         this.route.navigate(['user'])
       }else{
+        this.loading = false;
         window.alert('Data Not found. Please request for OTP again')
       }
     },errorObj =>{
