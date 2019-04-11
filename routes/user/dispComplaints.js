@@ -3,11 +3,19 @@ const {user} = require('../../models/userSchema');
 
 var formattedComp;
 
+function findUserName(userDetails, _id){
+  let name;
+  userDetails.forEach(element => {
+  if(element.id == _id) name = element.userName
+  });
+  return name;
+}
+
 exports.dispComplaints = async (req, res) => {
   formattedComp = [];
   let complaints = {};
 
-  userDetail = await user.findById(req.decodedData._id, {
+  userName = await user.findById(req.decodedData._id, {
     userName: true,
     _id: false
   });
@@ -23,12 +31,13 @@ exports.dispComplaints = async (req, res) => {
   } else {
     complaints = await complaint.find();
     if (complaints.length == 0) return res.status(204).send();
+    userDetails =await user.find({},{userName:true})
   }
 
   let filteredComplaints = complaints.map((i) => {
     return {
       date: i.date.getDate() + "-" + (i.date.getMonth() + 1) + "-" + i.date.getFullYear(),
-      userName: userDetail.userName,
+      userName: (req.body.type == 'personal')?userName.userName:findUserName(userDetails,i.user.id),
       description: i.description,
       category: i.category,
       location: i.location,
