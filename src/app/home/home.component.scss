@@ -397,7 +397,12 @@ footer{
    padding: .3rem 2rem;
    font-size: 1; 
  }   
-
+ .header__logo-box 
+    {
+      position: absolute;
+      top: 2rem;
+      left: 2rem; 
+    }
 }
 
   
