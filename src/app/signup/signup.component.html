@@ -75,6 +75,8 @@
                                            
                 
                         <button  mdbBtn type="submit" color="elegant" class="waves-light modal-color" mdbWavesEffect  [disabled]="!userSignupForm.valid">
+                               <i *ngIf="!loading" class="fa fa-calculator"></i>
+                              <i *ngIf="loading" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                           Sign Up
                         </button>
                       
@@ -96,6 +98,8 @@
                 
                       
                         <button mdbBtn type="submit" color="elegant" class="waves-light modal-color" mdbWavesEffect [disabled]="!userSignupOTPForm.valid">
+                               <i *ngIf="!loading" class="fa fa-calculator"></i>
+                              <i *ngIf="loading" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                           Verify OTP
                         </button>
                         <BR>
