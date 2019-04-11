@@ -41,9 +41,3 @@ Thumbs.db
 
 #photos uploaded on server
 uploads
-
-
-#file
-logfile.log
-uncaughtExceptions.log
-
