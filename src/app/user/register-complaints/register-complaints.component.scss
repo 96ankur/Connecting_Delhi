@@ -30,3 +30,15 @@
   .fa{
     font-size:24px;
   }
+  
+  footer{
+    
+    /* that every point the height of the box of this element should be 95% of the view port height */
+     background-position: botom;
+      position: relative;
+      -webkit-clip-path: polygon(0 45%, 100% 0%, 100% 100%, 0 99%);
+      clip-path: polygon(0 45%, 100% 0%, 100% 100%, 0 99%);
+  
+      
+    }
+  

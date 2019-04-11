@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent implements OnInit {
-
+  loading: boolean = false;
   ChangePasswordForm:FormGroup;
   public token;
   constructor( private fb: FormBuilder,
@@ -36,11 +36,14 @@ export class ChangePasswordComponent implements OnInit {
  }
 
  onSubmitChangePasswordForm(value){
+  this.loading = true;
   this.ChangePasswordService.changePassword(value).subscribe((res:any)=>{
     if(res.status == 200){
+      this.loading = false;
       window.alert(res.body);
       this.route.navigate(['user']);
     }else{
+      this.loading = false;
       window.alert(res.body);
     }
   })
