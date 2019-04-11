@@ -34,6 +34,8 @@
                         </mat-form-field>                 
                           <br><br>  
                             <button mdbBtn type="submit" color="primary"  block="true" class="waves-light modal-color" mdbWavesEffect [disabled]="!userLoginForm.valid">
+                              <i *ngIf="!loading" class="fa fa-calculator"></i>
+                              <i *ngIf="loading" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                               Login
                             </button>
                             

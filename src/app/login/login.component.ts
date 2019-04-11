@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  flag=false;
-  hide=true;
+  flag: boolean=false;
+  hide: boolean=true;
   
-  
+  loading: boolean = false;
   userLoginForm:FormGroup;
 
   constructor( private fb: FormBuilder, private route:Router, private loginService:LoginService) {
