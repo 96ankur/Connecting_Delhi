@@ -28,11 +28,6 @@
        </li>
 
   
-         <!-- Form -->           
-            <li class="nav-item">
-                <a class="nav-link waves-light" (click)="basicModal.show()" mdbWavesEffect mdbWavesEffect>2<i class="fa fa-bell"></i></a>
-            </li>
-            
             <!-- Dropdown -->
             <li class="nav-item dropdown teal"  dropdown dropdown-primary>
                 <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
@@ -57,8 +52,69 @@
 <br><br>
 <div class="container" [hidden]="hideElement">
         <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
+                <div class="col-md-3 wid pt-4" >
+                        <div class="card" style="box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.15);" >
+                            <div class="card__picture card__picture--1">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading ">
+                                    <span class="card__heading-span card__heading-span--1">@username</span>
+                            </h4>
+                               
+                            <div class="card-body">
+                                <div class="card__details">
+                                    <ul>
+                                       <li style="margin-top: 10px">Total Complaints : 3 </li>
+                                       <li style="margin-top: 10px">Solved Complaints: 30</li>
+                                       <li style="margin-top: 10px">PendingComplaints :3</li>
+                                     </ul>
+                                 </div>
+                                  
+                                
+                            </div>
+                          </div>
+                          <div class="card mt-4" style="box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.15);" >
+                              <div class="card__picture card__picture--1">
+                                  &nbsp;
+                              </div>
+                              <h4 class="card__heading ">
+                                      <span class="card__heading-span card__heading-span--1">CORPORATIONS</span>
+                              </h4>
+                                 
+                              <div class="card-body">
+                                  <div class="card__details">
+                                      <ul>
+                                         <li style="margin-top: 10px">Total Complaints : 3 </li>
+                                         <li style="margin-top: 10px">Solved Complaints: 30</li>
+                                         <li style="margin-top: 10px">PendingComplaints :3</li>
+                                       </ul>
+                                   </div>
+                                    
+                                  
+                              </div>
+                            </div>  
+                            <div class="card mt-4" style="box-shadow: 0 2.5rem 6rem rgba(0, 0, 0, 0.15);" >
+                                <div class="card__picture card__picture--1">
+                                    &nbsp;
+                                </div>
+                                <h4 class="card__heading ">
+                                        <span class="card__heading-span card__heading-span--1">Categories</span>
+                                </h4>
+                                   
+                                <div class="card-body">
+                                    <div class="card__details">
+                                        <ul>
+                                           <li style="margin-top: 10px">Total Complaints : 3 </li>
+                                           <li style="margin-top: 10px">Solved Complaints: 30</li>
+                                           <li style="margin-top: 10px">PendingComplaints :3</li>
+                                         </ul>
+                                     </div>
+                                      
+                                    
+                                </div>
+                              </div>  
+                    </div>
+            <div class="col-md-8">
                     <mat-card>
                        <mat-card class="pt-4" *ngFor="let complaint of complaints">
                            <div class="row">
@@ -95,7 +151,7 @@
                     </mat-card>
         
                 </div>
-                <div class="col-md-1"></div>
+                
             </div>
     
     <br>
@@ -181,50 +237,4 @@
       </footer>
       <!-- Footer -->
     
-    
-    
-    
-
-
-
-  <!--modal-->
   
-<div mdbModal #basicModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-full-height modal-right  modal-notify modal-success" role="document">
- 
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close pull-right white-text" aria-label="Close" (click)="basicModal.hide()">
-        <span aria-hidden="true">×</span>
-      </button>
-      <h4 class="modal-title w-100 white-text" id="myModalLabel">Notifications</h4>
-    </div>
-    <div class="modal-body">
-          <div class="text-center">
-            <i class="fa fa-bell fa-4x mb-3 animated rotateIn"></i>
-            <br>
-            <ul>
-                <li class="list-group-item justify-content-between">
-                     your water problem is solved
-                    <span class="badge badge-success badge-pill">old</span>
-                </li>
-                <li class="list-group-item justify-content-between">
-                     your complaint is marked
-                    <span class="badge badge-warning badge-pill">Mark</span>
-                </li>
-                <li class="list-group-item justify-content-between">
-                    Sewage problem is registered
-                   <span class="badge badge-primary badge-pill">New</span>
-                </li>
-            </ul>
-          </div>
-    </div>    
-    <div class="modal-footer">
-           
-      <button type="button" mdbBtn class="relative waves-light btn danger" style="border-radius:10px;" color="danger" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Clear</button>
-      <button type="button" mdbBtn  class="relative waves-light btn btn-outline-success" style="border-radius:10px;" mdbWavesEffect>Got it!</button>
-    </div>
-  </div>
-</div>
-</div>
