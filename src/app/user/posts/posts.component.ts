@@ -29,9 +29,10 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.PostService.post().subscribe((res: any) => {
       if (res.status == 200) {
-        this.complaints = JSON.parse(res.body.filteredComplaints);
-        this.count = JSON.parse(res.body.count);
-        this.userName = JSON.parse(res.body.userName);
+        let data = JSON.parse(res.body)
+        this.complaints = data.filteredComplaints;
+        this.count = data.count;
+        this.userName = data.userName;
       } else {
         window.alert("Complaint not registered");
       }
