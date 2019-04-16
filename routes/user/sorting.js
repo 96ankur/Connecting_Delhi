@@ -35,7 +35,7 @@ exports.sorting = async(req,res)=>{
             description:element.description,
             category:element.category,
             location:element.location,
-            m_corporation:element.m_corporation.name,
+            m_corporation:element.m_corporation.corp_id,
             status:(element.status==1)?'Pending':'Completed',
             image:element.image
         })

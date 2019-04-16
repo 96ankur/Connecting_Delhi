@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ChangePasswordService {
@@ -8,9 +10,13 @@ export class ChangePasswordService {
 
   changePassword(value){
     return this._http.post('/user/forgetPasswordUrl',{
-      email:value.email,
-      newPassword:value.newPassword,
-      confirmPassword:value.confirmPassword
-    })
+                        email:value.email,
+                        newPassword:value.newPassword
+                      },{responseType: 'text',observe: 'response'})
+                      .pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse){
+    return throwError(error || "Error")
   }
 }

@@ -7,7 +7,6 @@ exports.complaintsGraph = async (req,res)=>{
     let pi = Array(4).fill(0);
 
     const comp = await complaint.find({"m_corporation.corp_id":req.body.corpId},{date:true, status:true, category:true,_id:false});
-    
     comp.forEach(element =>{
         let month = (element.date).getMonth()
         tc[month]++;
@@ -23,7 +22,7 @@ exports.complaintsGraph = async (req,res)=>{
                 pi[1]++;
             break;
 
-            case 'Roads':
+            case 'Road':
                 pi[2]++;
             break;
 

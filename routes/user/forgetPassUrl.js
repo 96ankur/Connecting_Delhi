@@ -5,6 +5,7 @@
 var {user} = require('../../models/userSchema')
 const bcrypt=require('bcrypt')
 const saltRounds = 10;
+const Joi = require('joi')
 
 exports.forgetPasswordUrl= async (req,res)=>{
 
@@ -23,7 +24,7 @@ exports.forgetPasswordUrl= async (req,res)=>{
 function validate(data){
     const schema = {
         newPassword: Joi.string().required(),
-        email: Joi.email().required()
+        email: Joi.string().email().required()
     }
     return Joi.validate(data, schema);
 }

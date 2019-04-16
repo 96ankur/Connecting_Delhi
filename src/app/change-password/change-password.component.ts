@@ -40,11 +40,11 @@ export class ChangePasswordComponent implements OnInit {
   onSubmitHomeChangePasswordForm(value){
     value.email=atob(this.email);
    this.ChangePasswordService.changePassword(value).subscribe((res:any)=>{
-     if(res.success){
-       window.alert(res.msg);
-     }else{
-       window.alert(res.msg);
+     if(res.status == 200){
+       window.alert(res.body);
      }
+   },errorObj =>{
+     window.alert(errorObj.error);
    })
   }
 }

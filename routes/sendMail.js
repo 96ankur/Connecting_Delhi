@@ -8,7 +8,7 @@ var transporter = nodemailer.createTransport({
         rejectUnauthorized: false
     }
     });
-exports.sendMail=(sendTo,text)=>{
+exports.sendMail=async (sendTo,text)=>{
     var mailOptions = {
         from: 'quizzier2018@gmail.com',
         to: sendTo,
@@ -16,12 +16,13 @@ exports.sendMail=(sendTo,text)=>{
         text: text
         };
 
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+    try{
+        const res = await transporter.sendMail(mailOptions);
+        if(res.messageId){
+          return {}
+    }
+      }catch(err){
+        return {err}     // this err is sent to userSignup to remove document
+      }
 }
     

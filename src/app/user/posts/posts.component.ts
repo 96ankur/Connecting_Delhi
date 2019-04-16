@@ -9,8 +9,8 @@ import { Router } from "@angular/router";
 })
 export class PostsComponent implements OnInit {
   public complaints;
-  // public count= {};
-  // public userName = "";
+  public count: Object = {};
+  public userName:String = "";
   public token;
 
   constructor(private PostService: PostService, private route: Router) {
@@ -29,11 +29,10 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.PostService.post().subscribe((res: any) => {
       if (res.status == 200) {
-        this.complaints = JSON.parse(res.body)
-        // let data = JSON.parse(res.body)
-        // this.complaints = data.filteredComplaints;
-        // this.count = data.count;
-        // this.userName = data.userName;
+        let data = JSON.parse(res.body)
+        this.complaints = data.filteredComplaints;
+        this.count = data.count;
+        this.userName = data.userName;
       } else {
         window.alert("Complaint not registered");
       }
@@ -42,17 +41,17 @@ export class PostsComponent implements OnInit {
      });
   }
 
-  // sorting(data){
-  //   this.PostService.sort(data).subscribe((res:any)=>{
-  //     if (res.status == 200) {
-  //       this.complaints = JSON.parse(res.body);
-  //     } else {
-  //       window.alert("Complaint not registered");
-  //     }
-  //   },errorObj =>{
-  //      window.alert(errorObj.error);
-  //    })
-  // }
+  sorting(data){
+    this.PostService.sort(data).subscribe((res:any)=>{
+      if (res.status == 200) {
+        this.complaints = JSON.parse(res.body);
+      } else {
+        window.alert("Complaint not registered");
+      }
+    },errorObj =>{
+       window.alert(errorObj.error);
+     })
+  }
 
   logout() {
     sessionStorage.removeItem("x-auth-token");

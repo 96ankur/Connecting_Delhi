@@ -29,12 +29,13 @@ export class ForgotPasswordComponent implements OnInit {
  
   onSubmitUserForgotPasswordForm(value){
    this.ForgotPasswordService.forgotPassword(value).subscribe((res:any)=>{
-     if(res.success){
-       window.alert(res.msg);
+     if(res.status == 200){
+       window.alert(res.body);
        this.route.navigate(['home'])
-     }else{
-       window.alert(res.msg)
      }
+   },errorObj =>{
+    // this.loading = false;
+     window.alert(errorObj.error);
    })
   }
   

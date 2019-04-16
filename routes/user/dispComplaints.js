@@ -57,7 +57,6 @@ exports.dispComplaints = async (req, res) => {
       completedComplaints:completedComplaints
   }
 
-  res.send(filteredComplaints);
-
-  // res.send({filteredComplaints,count,userName:userName.userName});
+  if (req.body.type == 'personal') res.send(filteredComplaints);
+  else    res.send({filteredComplaints,count,userName:userName.userName});
 }
