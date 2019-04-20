@@ -7,11 +7,6 @@ export class RegisterCompService {
 
   constructor(private _http:HttpClient) { }
 
-  header=new HttpHeaders({
-    // "Content-Type":"multipart/form-data",
-    "x-auth-token":sessionStorage.getItem("x-auth-token")
-  })
-
   registerComplaints(value){
     let data={
                 description:value.description,
@@ -23,7 +18,10 @@ export class RegisterCompService {
     fd.append('data',JSON.stringify(data))
     fd.append('image',value.selectedFile,value.selectedFile.name);
     return this._http.post('/user/registerComplaints',fd,{
-                            headers:this.header,
+                            headers:new HttpHeaders({
+                              // "Content-Type":"multipart/form-data",
+                              "x-auth-token":sessionStorage.getItem("x-auth-token")
+                            }),
                             responseType: 'text',
                             observe: 'response'
                           })

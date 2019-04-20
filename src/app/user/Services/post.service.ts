@@ -8,14 +8,12 @@ export class PostService {
 
   constructor(private _http:HttpClient) { }
 
-  header=new HttpHeaders({
-    "Content-Type":"application/json",
-    "x-auth-token":sessionStorage.getItem("x-auth-token")
-  })
-
   post(){
     return this._http.post('/user/dispComplaints',{},{
-                           headers:this.header,
+                           headers:new HttpHeaders({
+                            "Content-Type":"application/json",
+                            "x-auth-token":sessionStorage.getItem("x-auth-token")
+                          }),
                            responseType: 'text',
                            observe: 'response'})
                       .pipe(catchError(this.errorHandler));
@@ -23,7 +21,10 @@ export class PostService {
 
   sort(data){
     return this._http.post('/user/sorting',data,{
-                        headers:this.header,
+                        headers:new HttpHeaders({
+                          "Content-Type":"application/json",
+                          "x-auth-token":sessionStorage.getItem("x-auth-token")
+                        }),
                         responseType: 'text',
                         observe: 'response'})
                       .pipe(catchError(this.errorHandler))

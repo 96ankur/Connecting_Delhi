@@ -11,7 +11,6 @@ exports.userLogin = async(req, res)=>{
   if (!userDetails)  return res.status(401).send("Invalid Email or Password");
   
   const validPassword = await bcrypt.compare(req.body.userPassword, userDetails.userPassword);
-  console.log(validPassword)
   if (!validPassword) return res.status(401).send("Invalid Email or Password");
     
   const token = userDetails.generateAuthToken(userDetails._id);

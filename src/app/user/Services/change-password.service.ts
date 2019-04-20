@@ -6,17 +6,15 @@ export class ChangePasswordService {
 
   constructor(private _http:HttpClient) { }
 
-  header=new HttpHeaders({
-    "Content-Type":"application/json",
-    "x-auth-token":sessionStorage.getItem("x-auth-token")
-  })
-
   changePassword(value){
     return this._http.post('/user/changeUserPassword',{
       oldPassword:value.oldPassword,
       newPassword:value.newPassword,
     },{
-      headers:this.header,
+      headers:new HttpHeaders({
+        "Content-Type":"application/json",
+        "x-auth-token":sessionStorage.getItem("x-auth-token")
+      }),
       responseType: 'text',
       observe: 'response'})
   }
