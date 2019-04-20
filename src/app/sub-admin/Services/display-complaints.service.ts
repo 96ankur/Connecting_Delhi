@@ -8,16 +8,14 @@ import { catchError } from 'rxjs/operators';
 export class DisplayComplaintsService {
 
   constructor(private _http:HttpClient) { }
-
-  header=new HttpHeaders({
-    "Content-Type":"application/json",
-    "x-auth-token":sessionStorage.getItem("x-auth-token")
-  })
   
   complaints(category){
     return this._http.post('/mc/dispCompByCategory',{
                           category:category},{
-                          headers:this.header,
+                          headers:new HttpHeaders({
+                            "Content-Type":"application/json",
+                            "x-auth-token":sessionStorage.getItem("x-auth-token")
+                          }),
                           responseType: 'text',
                           observe: 'response'
                         })
